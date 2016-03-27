@@ -20,13 +20,34 @@ function timezone_select_options( $selected_timezone=NULL ) {
     return $output;
 }
 
-function timezone_select_continent( $selected_continent=NULL ) {
-    $tz_ids = array(
-        'Asia'
-    );
+function timezone_select_city( $selected_city=NULL ) {
+    $tz_ids = timezone_identifiers_list();
     // $tz_ids = DateTimeZone::listIdentifiers();
     
+    /*
+     * 1. Get the list of Timezones
+     * 2. Break it into parts that we can recombine later
+     * 3. Output the continent part
+     * 4. Send to JSON so JavaScript/jQuery can use the data to dynamically recreate second dropdown
+     */
+    
+    $continent_ids = array(
+            'Africa',
+            'America',
+            'Antarctica',
+            'Arctic',
+            'Asia',
+            'Atlantic',
+            'Australia',
+            'Europe',
+            'Indian',
+            'Pacific',
+            'UTC'
+    );
+    
     $output = "";
+    $contArr = array();
+    $i = 0;
     
     $dt = new DateTime( 'now' );
     foreach( $tz_ids as $zone ) {
@@ -34,31 +55,61 @@ function timezone_select_continent( $selected_continent=NULL ) {
         $dt->setTimezone( $this_tz );
         $offset = $dt->format( 'P' );
         
-        $output .= "<option value='" . $zone . "'";
-        if( $selected_timezone == $zone ) { $output .= " selected"; }
+        $zoneArr = explode( '/', $zone );
+        if( !in_array( $zoneArr[0], $continent_ids ) ) 
+                continue;
+        
+        $continent = isset( $zoneArr[0] ) ? $zoneArr[0] : '';
+        $city = isset( $zoneArr[1] ) ? '/' . $zoneArr[1] : '';
+        $subcity = isset( $zoneArr[2] ) ? '/' . $zoneArr[2] : '';
+        
+        
+        $output .= "<option value='" . $continent . $city . $subcity . "'";
+        if( $selected_city == $city ) { $output .= " selected"; }
         $output .= ">";
-        $output .= $zone . " (UTC/GMT $offset)";
+        if( $city == '' ) {
+            $output .= $continent;
+        } else {
+            if( $subcity == '' ) {
+                $output .= str_replace( '_', ' ', substr( $city, 1 ) ); // . " (UTC/GMT $offset)";
+            } else {
+                $output .= str_replace( '_', ' ', substr( $city, 1 ) ) . ', ' . str_replace( '_', ' ', substr( $subcity, 1 ) );
+            }
+        }
         $output .= "</option>";
     }
     return $output;
 }
 
-function timezone_select_city( $selected_city=NULL ) {
-    $tz_ids = timezone_identifiers_list();
+function timezone_select_continent( $selected_continent=NULL ) {
+    // $tz_ids = timezone_identifiers_list();
     // $tz_ids = DateTimeZone::listIdentifiers();
+    $continent_ids = array(
+            'Africa',
+            'America',
+            'Antarctica',
+            'Arctic',
+            'Asia',
+            'Atlantic',
+            'Australia',
+            'Europe',
+            'Indian',
+            'Pacific',
+            'UTC'
+    );
     
     $output = "";
     
     $dt = new DateTime( 'now' );
-    foreach( $tz_ids as $zone ) {
-        $this_tz = new DateTimeZone( $zone );
-        $dt->setTimezone( $this_tz );
-        $offset = $dt->format( 'P' );
+    foreach( $continent_ids as $continent ) {
+        // $this_ct = new DateTimeZone( $zone );
+        // $dt->setTimezone( $this_tz );
+        // $offset = $dt->format( 'P' );
         
-        $output .= "<option value='" . $zone . "'";
-        if( $selected_timezone == $zone ) { $output .= " selected"; }
+        $output .= "<option value='" . $continent . "'";
+        if( $selected_continent == $continent ) { $output .= " selected"; }
         $output .= ">";
-        $output .= $zone . " (UTC/GMT $offset)";
+        $output .= $continent; // . " (UTC/GMT $offset)";
         $output .= "</option>";
     }
     return $output;

@@ -55,22 +55,22 @@ require_once( 'functions.php' );
     <dl>
         <dt>From Timezone:</dt>
         <dd>
-            <select name="jkl_tz_from_tz_country">
-                <?= timezone_select_options( $from_tz_continent ); ?>
+            <select name="jkl_tz_from_tz_country" id="from_continent">
+                <?= timezone_select_continent( $from_tz_continent ); ?>
             </select>
-            <select name="jkl_tz_from_tz_city">
-                <?= timezone_select_options( $from_tz_city ); ?>
+            <select name="jkl_tz_from_tz_city" id="from_city">
+                <?= timezone_select_city( /* $from_tz_city */ ); ?>
             </select>
         </dd>
     </dl>
     <dl>
         <dt>To Timezone:</dt>
         <dd>
-            <select name="jkl_tz_to_tz_country">
-                <?= timezone_select_options( $to_tz_continent ); ?>
+            <select name="jkl_tz_to_tz_country" id="to_continent">
+                <?= timezone_select_continent( $to_tz_continent ); ?>
             </select>
-            <select name="jkl_tz_to_tz_city">
-                <?= timezone_select_options( $to_tz_city ); ?>
+            <select name="jkl_tz_to_tz_city" id="to_city">
+                <?= timezone_select_city( $to_tz_city ); ?>
             </select>
         </dd>
     </dl>

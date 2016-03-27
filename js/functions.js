@@ -17,6 +17,15 @@
             changeYear: true,
         });
         
+        /*
+         * Functionality for selective dropdowns
+         * Only show city names for the continents they are in
+         */
+        var f_cont = $( '#from_continent' ).val();
+        var f_city = $( '#from_city' ).val();
+        var t_cont = $( '#to_continent' ).val();
+        var t_city = $( '#to_city' ).val();
+        
     }); // END main function
     
 }) ( jQuery );

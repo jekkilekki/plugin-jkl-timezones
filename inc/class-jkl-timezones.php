@@ -65,7 +65,7 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             // Enqueue Styles and Scripts
             function jkl_tz_scripts_styles() {
                 wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );
-                wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery-ui-datepicker' ), '20160327', true );
+                wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), '20160327', true );
             }
             add_action( 'wp_enqueue_scripts', 'jkl_tz_scripts_styles' );
             
