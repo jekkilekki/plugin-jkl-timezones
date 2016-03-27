@@ -11,27 +11,27 @@
 
 require_once( 'functions.php' );
 
-if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
-    $from_month = $_POST[ 'jkl_tz_from_month' ];
-    $from_day = $_POST[ 'jkl_tz_from_day' ];
-    $from_year = $_POST[ 'jkl_tz_from_year' ];
-    $from_hour = $_POST[ 'jkl_tz_from_hour' ];
-    $from_minute = $_POST[ 'jkl_tz_from_minute' ];
-    
-    // Do some error checking / sanitizing here
-    $from_time = $from_year . "/" . $from_month . "/" . $from_day . " " . $from_hour . ":" . $from_minute;
-    $from_tz = $_POST[ 'jkl_tz_from_tz' ];
-    $to_tz = $_POST[ 'jkl_tz_to_tz' ];
-    
-    // Prevent injection/hacking
-    $tz_ids = timezone_identifiers_list();
-    if( in_array( $from_tz, $tz_ids ) && in_array( $to_tz, $tz_ids ) ) {
-        $from_tz_obj = new DateTimeZone( $from_tz );
-        $to_tz_obj = new DateTimeZone( $to_tz );
-        $converted_time = new DateTime( $from_time, $from_tz_obj );
-        $converted_time->setTimezone( $to_tz_obj );
-    }
-}
+//if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
+//    $from_date = $_POST[ 'jkl_tz_from_date' ];
+//    $from_hour = $_POST[ 'jkl_tz_from_hour' ];
+//    $from_minute = $_POST[ 'jkl_tz_from_minute' ];
+//    
+//    // Do some error checking / sanitizing here
+//    $from_time = str_replace( $from_date, '-', '/' ) . " " . $from_hour . ":" . $from_minute;
+//    $from_tz_country = $_POST[ 'jkl_tz_from_tz_country' ];
+//    $from_tz_city = $_POST[ 'jkl_tz_from_tz_city' ];
+//    $to_tz_country = $_POST[ 'jkl_tz_to_tz_country' ];
+//    $to_tz_city = $_POST[ 'jkl_tz_to_tz_city' ];
+//    
+//    // Prevent injection/hacking
+//    $tz_ids = timezone_identifiers_list();
+//    if( in_array( $from_tz, $tz_ids ) && in_array( $to_tz, $tz_ids ) ) {
+//        $from_tz_obj = new DateTimeZone( $from_tz );
+//        $to_tz_obj = new DateTimeZone( $to_tz );
+//        $converted_time = new DateTime( $from_time, $from_tz_obj );
+//        $converted_time->setTimezone( $to_tz_obj );
+//    }
+//}
 ?>
 
 <form action="" method="POST">
@@ -39,39 +39,38 @@ if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
     <dl>
         <dt>From Time:</dt>
         <dd>
-            <input id="jkl-timezones-date"><i class="fa fa-calendar"></i>
-            <select name="jkl_tz_from_month">
-                <?= month_select_options( $from_month ); ?>
-            </select>
-            <select name="jkl_tz_from_day">
-                <?= day_select_options( $from_day ); ?>
-            </select>
-            <select name="jkl_tz_from_year">
-                <?= year_select_options( $from_year ); ?>
-            </select>
-            -
-            <select name="jkl_tz_from_hour">
+            <input name="jkl_tz_from_date" id="jkl-timezones-date"><i class="fa fa-calendar"></i><br>
+            <select name="jkl_tz_from_hour" class="time">
                 <?= hour_select_options( $from_hour ); ?>
             </select>
             :
-            <select name="jkl_tz_from_minute">
+            <select name="jkl_tz_from_minute" class="time">
                 <?= minute_select_options( $from_minute ); ?>
+            </select>
+            <select name="jkl_tz_ampm" class="time">
+                <?= ampm_select_options( $from_ampm ); ?>
             </select>
         </dd>
     </dl>
     <dl>
         <dt>From Timezone:</dt>
         <dd>
-            <select name="jkl_tz_from_tz">
-                <?= timezone_select_options( $from_tz ); ?>
+            <select name="jkl_tz_from_tz_country">
+                <?= timezone_select_options( $from_tz_continent ); ?>
+            </select>
+            <select name="jkl_tz_from_tz_city">
+                <?= timezone_select_options( $from_tz_city ); ?>
             </select>
         </dd>
     </dl>
     <dl>
         <dt>To Timezone:</dt>
         <dd>
-            <select name="jkl_tz_to_tz">
-                <?= timezone_select_options( $to_tz ); ?>
+            <select name="jkl_tz_to_tz_country">
+                <?= timezone_select_options( $to_tz_continent ); ?>
+            </select>
+            <select name="jkl_tz_to_tz_city">
+                <?= timezone_select_options( $to_tz_city ); ?>
             </select>
         </dd>
     </dl>

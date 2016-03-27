@@ -1,0 +1,9 @@
+#jkl-timezones-date {
+    background: black;
+}
+.time {
+    width: 50px;
+    display: inline-block;
+    /*margin-right: 10px;*/
+}
+

@@ -20,6 +20,50 @@ function timezone_select_options( $selected_timezone=NULL ) {
     return $output;
 }
 
+function timezone_select_continent( $selected_continent=NULL ) {
+    $tz_ids = array(
+        'Asia'
+    );
+    // $tz_ids = DateTimeZone::listIdentifiers();
+    
+    $output = "";
+    
+    $dt = new DateTime( 'now' );
+    foreach( $tz_ids as $zone ) {
+        $this_tz = new DateTimeZone( $zone );
+        $dt->setTimezone( $this_tz );
+        $offset = $dt->format( 'P' );
+        
+        $output .= "<option value='" . $zone . "'";
+        if( $selected_timezone == $zone ) { $output .= " selected"; }
+        $output .= ">";
+        $output .= $zone . " (UTC/GMT $offset)";
+        $output .= "</option>";
+    }
+    return $output;
+}
+
+function timezone_select_city( $selected_city=NULL ) {
+    $tz_ids = timezone_identifiers_list();
+    // $tz_ids = DateTimeZone::listIdentifiers();
+    
+    $output = "";
+    
+    $dt = new DateTime( 'now' );
+    foreach( $tz_ids as $zone ) {
+        $this_tz = new DateTimeZone( $zone );
+        $dt->setTimezone( $this_tz );
+        $offset = $dt->format( 'P' );
+        
+        $output .= "<option value='" . $zone . "'";
+        if( $selected_timezone == $zone ) { $output .= " selected"; }
+        $output .= ">";
+        $output .= $zone . " (UTC/GMT $offset)";
+        $output .= "</option>";
+    }
+    return $output;
+}
+
 /**
  * Generic function to output select option values
  * We just need an assc array with key=>value pairs
@@ -85,14 +129,14 @@ function year_select_options( $selected_year=NULL ) {
 function hour_option_format( $hour ) {
     $hour_ampm = $hour < 12 ? $hour : $hour - 12;
     if( $hour_ampm == 0 ) { $hour_ampm = 12; }
-    $ampm = $hour < 12 ? 'am' : 'pm';
-    $output = str_pad( $hour, 2, '0', STR_PAD_LEFT );
-    $output .= " ( $hour_ampm $ampm )";
+    // $ampm = $hour < 12 ? 'am' : 'pm';
+    // $output = str_pad( $hour, 2, '0', STR_PAD_LEFT );
+    $output .= "$hour_ampm";
     return $output;
 }
 
 function hour_select_options( $selected_hour=NULL ) {
-    $range = range( 0, 23 );
+    $range = range( 1, 12 );
     $labels = array_map( 'hour_option_format', $range );
     $hours = array_combine( $range, $labels );
     if( is_null( $selected_hour ) ) {
@@ -113,4 +157,12 @@ function minute_select_options( $selected_minute=NULL ) {
         $selected_minute = date( 'i' );
     }
     return select_options_for( $minutes, $selected_minute );
+}
+
+function ampm_select_options( $selected_ampm=NULL ) {
+    $ampm = array( 'am' => 'am', 'pm' => 'pm' );
+    if( is_null( $selected_ampm ) ) {
+        $selected_ampm = 'am';
+    }
+    return select_options_for( $ampm, $selected_ampm );
 }
