@@ -42,6 +42,15 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
          */
         private $widget;
         
+        /**
+         * Shortcode
+         * 
+         * @since   0.0.1
+         * @access  private
+         * @var     JKL_Timezones_Shortcode $shortcode  A reference to the shortcode.
+         */
+        private $shortcode;
+        
         
         /**
          * CONSTRUCTOR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -58,17 +67,38 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             $this->version  = $version;
             
             // Create the widget
+            $this->make_widget();
+            
+            // Create the shortcode
+            $this->make_shortcode();
+            
+            // Enqueue styles and scripts
+            $this->get_scripts();
+            
+        }
+        
+        function make_widget() {
             add_action( 'widgets_init', function() {
                     register_widget( 'JKL_Timezones_Widget' );
             });
+        }
+        
+        function make_shortcode() {
             
-            // Enqueue Styles and Scripts
-            function jkl_tz_scripts_styles() {
-                wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );
-                wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), '20160327', true );
+            if ( is_null( $this->shortcode ) ) {
+                $this->shortcode = new JKL_Timezones_Shortcode();
             }
-            add_action( 'wp_enqueue_scripts', 'jkl_tz_scripts_styles' );
+            return $this->shortcode;
             
+        }
+        
+        // Enqueue Styles and Scripts
+        function jkl_tz_scripts_styles() {
+            wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );
+            wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), '20160327', true );
+        } 
+        function get_scripts() {
+            add_action( 'wp_enqueue_scripts', array( $this, 'jkl_tz_scripts_styles' ) );
         }
         
     }

@@ -22,30 +22,21 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
          */
         public function __construct() {
             
-            $widget_ops = array(
-                    'classname'     => 'jkl_timezones_widget',
-                    'description'   => __( 'A Timezone Calculator Widget to help easily match times in different zones.', 'jkl-timezones' ),
-            );
-            parent::__construct( 
-                    'jkl_timezones_widget',                 // Base ID
-                    __( 'JKL Timezones', 'jkl-timezones' ), // Name
-                    $widget_ops                             // Args
-            );
-            
-            load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages' );
+            $this->register();
             
         }
         
-        function jkl_timezones_make_shortcode( $atts ) {
+        public function register() {
+            add_shortcode( 'jkltz', array( $this, 'jkl_timezones_make_shortcode' ) );
+        }
+        
+        function jkl_timezones_make_shortcode() {
             
-            $a = shortcode_atts(
-                array(
-                    'color' => 'steelblue',
-                ), $atts );
-            return "color = { $a[ 'color'] }";
+            include 'view-jkl-timezones-widget.php';
         
         }
-        add_shortcode( 'jkl_tz', 'jkl_timezones_make_shortcode' );
+        
+        //add_shortcode( 'jkl_tz', 'jkl_timezones_make_shortcode' );
         
     } // END class JKL_Timezones_Shortcode
     

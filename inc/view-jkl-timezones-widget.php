@@ -44,7 +44,7 @@ if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
 }
 ?>
 
-<form action="" method="POST">
+<form id="jkl_timezones_form" action="" method="POST">
         
     <dl>
         <dt>From Time:</dt>

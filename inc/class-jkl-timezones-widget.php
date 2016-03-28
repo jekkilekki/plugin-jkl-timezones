@@ -74,11 +74,14 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
         public function form( $instance ) {
             
             // Outputs the options form on admin
-            $title = ! empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Timezone Calculator', 'jkl-timezones' ); ?>
+            $title = ! empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Timezone Calculator', 'jkl-timezones' );
+            $color = ! empty( $instance[ 'color' ] ) ? $instance[ 'color' ] : 'steelblue'; ?>
             
             <p>
-                <label for="<?= $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+                <label for="<?= $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'jkl-timezones' ); ?></label>
                 <input class="widefat" id="<?= $this->get_field_id( 'title' ); ?>" name="<?= $this->get_field_name( 'title' ); ?>" type="text" value="<?= esc_attr( $title ); ?>">
+                <label for="<?= $this->get_field_id( 'color' ); ?>"><?php _e( 'Success Color:', 'jkl-timezones' ); ?></label>
+                <input class="widefat" id="<?= $this->get_field_id( 'color' ); ?>" name="<?= $this->get_field_name( 'color' ); ?>" type="color" value="<?= esc_html( $color ); ?>">
             </p>
             
             <?php
@@ -100,6 +103,7 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
             // Processes widget options to be saved
             $instance = array();
             $instance[ 'title' ] = ( ! empty( $new_instance[ 'title' ] ) ) ? strip_tags( $new_instance[ 'title' ] ) : '';
+            $instance[ 'color' ] = ( ! empty( $new_instance[ 'color' ] ) ) ? strip_tags( $new_instance[ 'color' ] ) : '';
             
             return $instance;
             
