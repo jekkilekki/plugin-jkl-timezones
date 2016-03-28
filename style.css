@@ -1,9 +1,74 @@
-#jkl-timezones-date {
-    background: black;
+.jkl_timezones_widget dd {
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
 }
-.time {
-    width: 50px;
+.jkl_timezones_widget input {
+    margin: 0;
+}
+.jkl_timezones_widget dd .dashicons {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding-top: 10px;
+    opacity: 0.5;
+    font-size: 1.3em;
+}
+
+#jkl-timezones-date {
+    /*background: black;*/
+}
+.jkltz-time {
+    width: 35%;
     display: inline-block;
     /*margin-right: 10px;*/
+}
+#jkltz-am {
+    margin: 0 4px 0 10px;
+}
+
+.jkl-converted-time {
+    background: steelblue;
+    color: white;
+    padding: 1em;
+    border-radius: 10px;
+}
+.jkl-converted-time dt {
+    font-weight: normal;
+}
+.jkl-converted-time dd {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 0;
+    border: 2px solid white;
+    padding: 3px;
+    text-align: center;
+}
+.jkl-tz-controls {
+    /*text-align: center;*/
+}
+.jkl-tz-controls input {
+    width: 30%;
+}
+
+/*
+ * Datepicker Styles
+ */
+.ui-datepicker-header {
+    background: gainsboro;
+    position: relative;
+}
+.ui-datepicker-prev {
+    position: absolute;
+    left: 5px;
+}
+.ui-datepicker-next {
+    position: absolute;
+    right: 5px;
+}
+.ui-datepicker-title {
+    width: auto;
+    text-align: center;
+    font-weight: bold;
 }
 

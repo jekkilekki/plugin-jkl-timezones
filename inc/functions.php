@@ -1,7 +1,63 @@
 <?php
+/**
+ * Returns the timezone string for a WP site, even if set to UTC offset
+ * 
+ * Adapted from http://www.php.net/manual/en/function.timezone-name-from-abbr.php#89155
+ * @link    https://www.skyverge.com/blog/down-the-rabbit-hole-wordpress-and-timezones/
+ * 
+ * @since   0.0.1
+ * @return  string  valid PHP timezone string
+ */
+if( !function_exists( 'wp_get_timezone_string' ) ) {
+    function wp_get_timezone_string() {
+        
+        // If site timezone string exists, return it
+        if ( $timezone = get_option( 'timezone_string ' ) )
+                return $timezone;
+        
+        // Get UTC offset, if it isn't set then return UTC
+        if ( 0 === ( $utc_offset = get_option( 'gmt_offset', 0 ) ) )
+                return 'UTC';
+        
+        // Adjust UTC offset from hours to seconds
+        $utc_offset *= 3600;
+        
+        // Attempt to guess the timezone string from the UTC offset
+        if ( $timezone = timezone_name_from_abbr( '', $utc_offset, 0 ) ) 
+                return $timezone;
+        
+        // Last try, guess timezone string manually
+        $is_dst = date( 'I' );
+        
+        foreach ( timezone_abbreviations_list() as $abbr ) {
+            foreach ( $abbr as $city ) {
+                if ( $city[ 'dst' ] == $is_dst && $city[ 'offset' ] == $utc_offset )
+                    return $city[ 'timezone_id' ];
+            }
+        }
+        
+        // Fallback to UTC
+        return 'UTC';
+    }
+}
+
+/*
+ * Round a time to the nearest X minutes
+ */
+function round_time( $time_string ) {
+    $time = explode( ':', $time_string );
+    $hours = $time[0];
+    $minutes = $time[1];
+    return $hours . ":" . ( $minutes - ( $minutes % 15 ) );
+}
+
 function timezone_select_options( $selected_timezone=NULL ) {
     $tz_ids = timezone_identifiers_list();
     // $tz_ids = DateTimeZone::listIdentifiers();
+    
+    if( $selected_timezone == NULL ) {
+        $selected_timezone = wp_get_timezone_string();
+    }
     
     $output = "";
     
@@ -10,11 +66,16 @@ function timezone_select_options( $selected_timezone=NULL ) {
         $this_tz = new DateTimeZone( $zone );
         $dt->setTimezone( $this_tz );
         $offset = $dt->format( 'P' );
+        $zoneArr = explode( '/', $zone );
+        
+        $continent = $zoneArr[0];
+        $city = isset( $zoneArr[1] ) ? ' &rarr; ' . str_replace( '_', ' ', $zoneArr[1] ) : '';
+        $subcity = isset( $zoneArr[2] ) ? ', ' . str_replace( '_', ' ', $zoneArr[2] ) : '';
         
         $output .= "<option value='" . $zone . "'";
         if( $selected_timezone == $zone ) { $output .= " selected"; }
         $output .= ">";
-        $output .= $zone . " (UTC/GMT $offset)";
+        $output .= "(UTC $offset) " . $continent . $city . $subcity;
         $output .= "</option>";
     }
     return $output;
@@ -182,7 +243,7 @@ function hour_option_format( $hour ) {
     if( $hour_ampm == 0 ) { $hour_ampm = 12; }
     // $ampm = $hour < 12 ? 'am' : 'pm';
     // $output = str_pad( $hour, 2, '0', STR_PAD_LEFT );
-    $output .= "$hour_ampm";
+    $output = "$hour_ampm";
     return $output;
 }
 
@@ -208,6 +269,26 @@ function minute_select_options( $selected_minute=NULL ) {
         $selected_minute = date( 'i' );
     }
     return select_options_for( $minutes, $selected_minute );
+}
+
+function time_select_options( $selected_time=NULL ) {
+    if( is_null( $selected_time ) ) {
+        $selected_time = date( 'H:i' );
+    }
+    $hour_range = range( 1, 12 );
+    $hour_labels = array_map( 'hour_option_format', $hour_range );
+    $minute_range = range( 0, 59, 15 );
+    $minute_labels = array_map( 'minute_option_format', $minute_range );
+    
+    $timeArr = array();
+    
+    foreach( $hour_labels as $hour ) {
+        foreach( $minute_labels as $minute ) {
+            $timeArr[] = "$hour:$minute";
+        }
+    }
+    $time = array_combine( $timeArr, $timeArr );
+    return select_options_for( $time, $selected_time );
 }
 
 function ampm_select_options( $selected_ampm=NULL ) {

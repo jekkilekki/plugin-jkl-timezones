@@ -60,6 +60,14 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-jkl-timezones.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'inc/class-jkl-timezones-widget.php';
 
+/*
+ * The class that creates the Shortcode
+ */
+require_once plugin_dir_path( __FILE__ ) . 'inc/class-jkl-timezones-shortcode.php';
+
+/*
+ * The function that creates a new JKL_Timezones object and runs the program
+ */
 function run_timezones() {
     // Instantiate the plugin class
     $JKL_Timezones = new JKL_Timezones( 'jkl-timezones', '0.0.1' );
