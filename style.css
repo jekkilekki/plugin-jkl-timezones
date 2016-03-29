@@ -1,20 +1,20 @@
-.entry-content #jkl_timezones_form {
+.post #jkl_timezones_form {
     background: steelblue;
     padding: 1em;
     color: white;
     margin-bottom: 2em;
     position: relative;
 }
-.entry-content #jkl_timezones_form #jkl-timezones-date {
+.post #jkl_timezones_form #jkl-timezones-date {
     width: 50%;
     display: inline-block;
     margin-right: 0.5em;
 }
-.entry-content #jkl_timezones_form .jkltz-time {
+.post #jkl_timezones_form .jkltz-time {
     width: 30%;
     display: inline-block;
 }
-.entry-content #jkl_timezones_form .dashicons {
+.post #jkl_timezones_form .dashicons {
     position: absolute;
     top: 0;
     right: 10px;
@@ -23,7 +23,7 @@
     font-size: 1.3em;
     color: #aaa!important;
 }
-.entry-content #jkl_timezones_form .jkl-converted-time {
+.post #jkl_timezones_form .jkl-converted-time {
     padding: 0;
     margin-bottom: 2em;
 }
