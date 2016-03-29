@@ -11,9 +11,11 @@
 
 require_once( 'functions.php' );
 
+date_default_timezone_set( wp_get_timezone_string() );
+
 $from_date = date( 'Y\-m\-j' );
-$from_time = round_time( date( 'H:i' ) );
-$ampm = 'pm';
+$from_time = round_time( date( 'g:i' ) );
+$ampm = date( 'a' );
 $from_time_str = '';
 $from_tz = wp_get_timezone_string();
 $to_tz = wp_get_timezone_string();
@@ -45,25 +47,30 @@ if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
 ?>
 
 <form id="jkl_timezones_form" action="" method="POST">
+    
+    <h4>Timezone Calculator</h4>
         
-    <dl>
+    <dl class="jkl-from-time">
         <dt>From Time:</dt>
         <dd>
-            <input type="text" name="jkl_tz_from_date" id="jkl-timezones-date" value="<?php
+            <input type="text" name="jkl_tz_from_date" class="jkl-timezones-date" value="<?php
                 echo $from_date;
             ?>"><span class="dashicons dashicons-calendar"></span>
             <select name="jkl_tz_from_time" class="jkltz-time">
                 <?= time_select_options( $from_time ); ?>
             </select>
-            <input type="checkbox" name="jkl_tz_am" id="jkltz-am" <?php
-                echo ( $ampm == 'am' ) ? " checked" : '';
-            ?>>am
+            <input type="checkbox" name="jkl_tz_am" id="jkltz-am" <?php echo ( $ampm == 'am' ) ? " checked" : ''; ?>>am
+        </dd>
+    </dl>
+    <dl class="jkl-from-tz jkl-tz-select">
+        <dt>From Timezone:</dt>
+        <dd>
             <select name="jkl_tz_from_tz" id="from_continent">
                 <?= timezone_select_options( $from_tz ); ?>
             </select>
         </dd>
     </dl>
-    <dl>
+    <dl class="jkl-to-tz jkl-tz-select">
         <dt>To Timezone:</dt>
         <dd>
             <select name="jkl_tz_to_tz" id="to_continent">

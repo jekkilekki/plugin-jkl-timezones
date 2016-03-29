@@ -11,7 +11,7 @@
         /*
          * Add Date Picker functionality to the JKL Timezones Widget
          */
-        $( '#jkl-timezones-date' ).datepicker({
+        $( '.jkl-timezones-date' ).datepicker({
             dateFormat: 'yy-mm-dd',
             //changeMonth: true,
             //changeYear: true,

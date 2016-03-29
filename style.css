@@ -1,14 +1,21 @@
 .post #jkl_timezones_form {
     background: steelblue;
-    padding: 1em;
+    padding: 1em 1em 1.5em;
     color: white;
     margin-bottom: 2em;
     position: relative;
 }
-.post #jkl_timezones_form #jkl-timezones-date {
+.post #jkl_timezones_form h4 {
+    margin-top: 0;
+    color: #dcdcdc;
+}
+.post #jkl_timezones_form dl {
+    margin-bottom: 0;
+}
+.post #jkl_timezones_form .jkl-timezones-date {
     width: 50%;
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 1.5em;
 }
 .post #jkl_timezones_form .jkltz-time {
     width: 30%;
@@ -16,16 +23,68 @@
 }
 .post #jkl_timezones_form .dashicons {
     position: absolute;
-    top: 0;
-    right: 10px;
-    padding-top: 10px;
-    opacity: 0.5;
+    top: 1.5em;
+    right: 52%;
+    padding-top: 5px;
     font-size: 1.3em;
     color: #aaa!important;
 }
 .post #jkl_timezones_form .jkl-converted-time {
     padding: 0;
     margin-bottom: 2em;
+}
+.post #jkl_timezones_form .jkl-tz-select {
+    width: 50%;
+    float: left;
+}
+.post #jkl_timezones_form .jkl-from-time,
+.post #jkl_timezones_form .jkl-from-tz {
+    position: relative;
+}
+.post #jkl_timezones_form .jkl-from-tz dd:after {
+    display: block;
+    font-family: 'Dashicons';
+    content: '\f344';
+    color: #dcdcdc;
+    font-size: 1.5em;
+    position: absolute;
+    top: 1.25em;
+    right: -0.5em;
+}
+.post #jkl_timezones_form input[type="submit"] {
+    background: steelblue;
+    color: white;
+    border-color: #dcdcdc;
+}
+#jkl_timezones_form input[type="submit"]:hover {
+    box-shadow: 1px 1px 3px black;
+}
+
+
+.jkl-from-time,
+.jkl-from-time dd {
+    margin-bottom: 0em;
+}
+#jkl_timezones_form input {
+    padding-left: 1em!important;
+}
+
+.jkl-tz-select select {
+    padding-left: 0;
+    margin-top: 0!important;
+}
+
+.jkl_timezones_widget .jkl-from-time,
+.jkl_timezones_widget .jkl-from-time dd {
+    margin-bottom: 0.5em;
+}
+.jkl_timezones_widget .jkl-from-tz,
+.jkl_timezones_widget .jkl-from-tz dd {
+    margin-bottom: 1em;
+}
+.jkl_timezones_widget h4,
+.jkl_timezones_widget .jkl-from-tz dt {
+    display: none;
 }
 
 .jkl_timezones_widget dd {
@@ -40,19 +99,19 @@
     position: absolute;
     top: 0;
     right: 10px;
-    padding-top: 10px;
-    opacity: 0.5;
+    padding-top: 8px;
     font-size: 1.3em;
     color: #aaa!important;
 }
 
-#jkl-timezones-date {
+.jkl-timezones-date {
     /*background: black;*/
     padding: 0 0.5em;
 }
 .jkltz-time {
     width: 50%;
     display: inline-block;
+    padding-left: 1em;
     /*margin-right: 10px;*/
 }
 #jkltz-am {
@@ -86,6 +145,9 @@
 /*
  * Datepicker Styles
  */
+#ui-datepicker-div {
+    margin-top: -2em;
+}
 .ui-datepicker-header {
     background: gainsboro;
     position: relative;
