@@ -50,16 +50,22 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
          */
         public function widget( $args, $instance ) {
             
-            // Outputs the content of the widget
-            echo $args[ 'before_widget' ];
-            if ( ! empty( $instance[ 'title' ] ) ) {
-                echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ) . $args[ 'after_title' ];
+            // Only allow this widget to show up on Posts/Pages WITHOUT the shortcode
+            global $post;
+            if ( ! has_shortcode( $post->post_content, 'jkltz' ) ) {
+                
+                // Outputs the content of the widget
+                echo $args[ 'before_widget' ];
+                if ( ! empty( $instance[ 'title' ] ) ) {
+                    echo $args[ 'before_title' ] . apply_filters( 'widget_title', $instance[ 'title' ] ) . $args[ 'after_title' ];
+                }
+
+                // Output of the actual widget - call the function to create it here
+                include_once 'view-jkl-timezones-widget.php';
+
+                echo $args[ 'after_widget' ];
+                
             }
-            
-            // Output of the actual widget - call the function to create it here
-            include 'view-jkl-timezones-widget.php';
-            
-            echo $args[ 'after_widget' ];
             
         }
         

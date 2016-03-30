@@ -145,22 +145,22 @@
 /*
  * Datepicker Styles
  */
-#ui-datepicker-div {
+#ui-datepicker-div.jkl-timezones-datepicker {
     margin-top: -2em;
 }
-.ui-datepicker-header {
+.jkl-timezones-datepicker .ui-datepicker-header {
     background: gainsboro;
     position: relative;
 }
-.ui-datepicker-prev {
+.jkl-timezones-datepicker .ui-datepicker-prev {
     position: absolute;
     left: 5px;
 }
-.ui-datepicker-next {
+.jkl-timezones-datepicker .ui-datepicker-next {
     position: absolute;
     right: 5px;
 }
-.ui-datepicker-title {
+.jkl-timezones-datepicker .ui-datepicker-title {
     width: auto;
     text-align: center;
     font-weight: bold;

@@ -17,6 +17,9 @@
             //changeYear: true,
         });
         
+         // Add a new class to the Datepicker to (hopefully) avoid conflicts with other plugins
+        $( '#ui-datepicker-div' ).addClass( 'jkl-timezones-datepicker' );
+        
         /*
          * Functionality for selective dropdowns
          * Only show city names for the continents they are in
