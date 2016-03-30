@@ -10,7 +10,7 @@
  */
 
 // Prevent loading more than once per Page
-global $post;
+// global $post;
 // if( has_shortcode( $post->post_content, 'jkltz' ) ) :
 
 require_once( 'functions.php' );
