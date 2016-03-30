@@ -1,7 +1,7 @@
 # JKL Timezones
 
-*[Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
-*[Author Page](http://www.aaronsnowberger.com/)
+* [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
+* [Author Page](http://www.aaronsnowberger.com/)
 
 A simple Timezone widget that allows you to calculate time differences and 
 easily plan events or meetings based in other timezones relative to your own.
