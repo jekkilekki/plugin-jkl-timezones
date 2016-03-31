@@ -147,8 +147,8 @@ to let me know the specific features or problems you're having.
 
 == Screenshots ==
 
-1. Timezone Calculator Widget
-2. Timezone Calculator loaded in a Page via the shortcode
+1. Timezone Calculator loaded in a Page via the shortcode
+2. Timezone Calculator Widget
 
 == Other Notes ==
 

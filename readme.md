@@ -1,3 +1,5 @@
+![banner-772x250](https://cloud.githubusercontent.com/assets/6644259/14165024/adf49f18-f73f-11e5-8c2e-f24a3e07fb87.png)
+
 # JKL Timezones
 
 * [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
@@ -61,8 +63,13 @@ Full documentation of the Plugin and its uses can (currently) be found at its
 
 ###Screenshots
 
-1. Timezone Calculator Widget
 1. Timezone Calculator loaded in a Page via the shortcode
+
+![screenshot-1](https://cloud.githubusercontent.com/assets/6644259/14167004/0e926176-f753-11e5-84af-f3790a745b7f.png) 
+
+2. Timezone Calculator Widget
+
+![screenshot-2](https://cloud.githubusercontent.com/assets/6644259/14167024/49033042-f753-11e5-8b41-ef7e21907746.png)
 
 ###Contact Me
 If you have questions about, problems with, or suggestions for improving this 
