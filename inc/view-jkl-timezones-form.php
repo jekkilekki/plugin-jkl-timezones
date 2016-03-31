@@ -9,10 +9,6 @@
  * @author      Aaron Snowberger <jekkilekki@gmail.com>
  */
 
-// Prevent loading more than once per Page
-// global $post;
-// if( has_shortcode( $post->post_content, 'jkltz' ) ) :
-
 require_once( 'functions.php' );
 
 date_default_timezone_set( wp_get_timezone_string() );
@@ -95,5 +91,3 @@ if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
     </div>
 
 </form>
-
-<?php // endif; ?>

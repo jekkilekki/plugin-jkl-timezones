@@ -26,13 +26,17 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
             
         }
         
-        public function register() {
+         function register() {
             add_shortcode( 'jkltz', array( $this, 'jkl_timezones_make_shortcode' ) );
         }
         
-        function jkl_timezones_make_shortcode() {
+         function jkl_timezones_make_shortcode() {
             
-            include 'view-jkl-timezones-widget.php';
+            // Prevent loading more than once per Page
+            global $post;
+            if( has_shortcode( $post->post_content, 'jkltz' ) ) {
+                include_once 'view-jkl-timezones-form.php';
+            }
         
         }
         

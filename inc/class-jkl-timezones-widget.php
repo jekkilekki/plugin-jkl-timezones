@@ -35,9 +35,30 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
                     $widget_ops                             // Args
             );
             
-            load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages' );
+            $this->register();
             
         }
+        
+        protected function register() {
+            
+            add_action( 'widgets_init', function() {
+                    register_widget( 'JKL_Timezones_Widget' );
+            });
+            // add_action( 'admin_enqueue_scripts', array( $this, 'widget_color_picker' ) );
+            
+        }
+        
+        /**
+         * Possible Upcoming Feature : WP Color Picker
+         *
+        public function widget_color_picker( $hook ) {
+            
+            if ( 'widgets.php' != $hook ) return;
+            wp_enqueue_style( 'wp-color-picker' ); 
+            wp_enqueue_script( 'jkltz-color-picker', plugins_url( 'js/color_picker.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+            
+        }
+         */
         
         /**
          * Front-end display of the content of the widget
@@ -50,6 +71,8 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
          */
         public function widget( $args, $instance ) {
             
+            $color = ! empty( $instance[ 'color' ] ) ? $instance[ 'color' ] : 'purple'; 
+            
             // Only allow this widget to show up on Posts/Pages WITHOUT the shortcode
             global $post;
             if ( ! has_shortcode( $post->post_content, 'jkltz' ) ) {
@@ -61,7 +84,15 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
                 }
 
                 // Output of the actual widget - call the function to create it here
-                include_once 'view-jkl-timezones-widget.php';
+                ?>
+                <style>
+                    .jkl-converted-time {
+                        background: <?= $color ?>;
+                    }
+                </style>
+
+                <?php
+                include 'view-jkl-timezones-form.php';
 
                 echo $args[ 'after_widget' ];
                 
@@ -81,11 +112,15 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
             
             // Outputs the options form on admin
             $title = ! empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Timezone Calculator', 'jkl-timezones' );
-            $color = ! empty( $instance[ 'color' ] ) ? $instance[ 'color' ] : 'steelblue'; ?>
+            $color = ! empty( $instance[ 'color' ] ) ? $instance[ 'color' ] : 'purple'; 
+            
+            
+            ?>
             
             <p>
                 <label for="<?= $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'jkl-timezones' ); ?></label>
                 <input class="widefat" id="<?= $this->get_field_id( 'title' ); ?>" name="<?= $this->get_field_name( 'title' ); ?>" type="text" value="<?= esc_attr( $title ); ?>">
+                <br><br>
                 <label for="<?= $this->get_field_id( 'color' ); ?>"><?php _e( 'Success Color:', 'jkl-timezones' ); ?></label>
                 <input class="widefat" id="<?= $this->get_field_id( 'color' ); ?>" name="<?= $this->get_field_name( 'color' ); ?>" type="color" value="<?= esc_html( $color ); ?>">
             </p>

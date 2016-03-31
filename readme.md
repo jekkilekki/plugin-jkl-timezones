@@ -29,11 +29,19 @@ the WordPress General Settings Page does
 * Uses a special jQuery calendar popup for easy date selection
 * Only allows one instance of the Calculator to run on any Page at one time
 
+###Notes
+* Multiple widgets are allowed at once (on the same Post/Page)
+* Multiple shortcodes (on the same Post/Page) are disabled - multiple shortcodes
+will display only ONE form
+* On Posts/Pages with a shortcode, the widget will be disabled
+
 ###Planned Upcoming Features 
 * AJAX form submission to prevent page reload
 * Ability to give the shortcode a specific date and time (like for an Event you're 
 promoting) that will set as the default for the Calculator on that particular Page
 * Ability to change the color of the form (shortcode) or calculated result (widget)
+* Possibly allow users to select whether or not to display multiple forms in shortcodes
+and/or widgets 
 
 ###Translations 
 * English (EN) - default
@@ -69,6 +77,8 @@ Want updates about my other WordPress plugins, themes, or tutorials? Follow me
 
 * [jQuery UI Datepicker](http://jqueryui.com/datepicker/) licensed under MIT 
 License or GNU General Public License (GPL) Version 2
+* World Map image (in the banner) from [Dmthoth on Wikipedia](https://commons.wikimedia.org/wiki/File:Blank_Map_Pacific_World.svg)
+
 
 ##License
 This program is free software; you can redistribute it and/or modify it under the terms 

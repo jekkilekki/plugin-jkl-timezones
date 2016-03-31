@@ -51,6 +51,8 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
          */
         private $shortcode;
         
+        private $shortcode_count;
+        
         
         /**
          * CONSTRUCTOR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -72,18 +74,21 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             // Create the shortcode
             $this->make_shortcode();
             
-            // Enqueue styles and scripts
-            $this->get_scripts();
+            // Load the plugin and supplementary files
+            $this->load();
             
         }
         
-        function make_widget() {
-            add_action( 'widgets_init', function() {
-                    register_widget( 'JKL_Timezones_Widget' );
-            });
+        protected function make_widget() {
+            
+            if ( is_null( $this->widget ) ) {
+                $this->widget = new JKL_Timezones_Widget();
+            }
+            return $this->widget;
+
         }
         
-        function make_shortcode() {
+        protected function make_shortcode() {
             
             if ( is_null( $this->shortcode ) ) {
                 $this->shortcode = new JKL_Timezones_Shortcode();
@@ -91,14 +96,20 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             return $this->shortcode;
             
         }
+         
+        protected function load() {
+            
+            load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages' );
+            add_action( 'wp_enqueue_scripts', array( $this, 'jkl_tz_scripts_styles' ) );
+            
+        }
         
         // Enqueue Styles and Scripts
-        function jkl_tz_scripts_styles() {
+        public function jkl_tz_scripts_styles() {
+            
             wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );
             wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), '20160327', true );
-        } 
-        function get_scripts() {
-            add_action( 'wp_enqueue_scripts', array( $this, 'jkl_tz_scripts_styles' ) );
+        
         }
         
     }
