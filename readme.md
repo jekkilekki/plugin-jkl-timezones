@@ -1,3 +1,5 @@
+![banner-772x250](https://cloud.githubusercontent.com/assets/6644259/14165024/adf49f18-f73f-11e5-8c2e-f24a3e07fb87.png)
+
 # JKL Timezones
 
 * [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
