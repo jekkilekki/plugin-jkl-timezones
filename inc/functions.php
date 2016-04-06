@@ -155,13 +155,13 @@ function time_select_options( $selected_time=NULL ) {
 }
 
 /*
- * Round a time to the nearest X minutes
+ * Round a time to the nearest X minutes (in this case 15 min)
  */
-function round_time( $time_string ) {
+function round_time( $time_string, $increment ) {
     $time = explode( ':', $time_string );
     $hours = $time[0];
     $minutes = $time[1];
-    return $hours . ":" . ( $minutes - ( $minutes % 15 ) );
+    return $hours . ":" . ( $minutes - ( $minutes % $increment ) );
 }
 
 /*

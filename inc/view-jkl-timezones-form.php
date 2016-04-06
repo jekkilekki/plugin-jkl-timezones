@@ -9,41 +9,8 @@
  * @author      Aaron Snowberger <jekkilekki@gmail.com>
  */
 
-require_once( 'functions.php' );
+require_once( 'controller.php' ); 
 
-date_default_timezone_set( wp_get_timezone_string() );
-
-$from_date = date( 'Y\-m\-j' );
-$from_time = round_time( date( 'g:i' ) );
-$ampm = date( 'a' );
-$from_time_str = '';
-$from_tz = wp_get_timezone_string();
-$to_tz = wp_get_timezone_string();
-
-if( isset( $_POST[ 'jkl_tz_reset' ] ) ) {
-    $_POST = '';
-}
-
-if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
-    $from_date = $_POST[ 'jkl_tz_from_date' ];
-    $from_time = $_POST[ 'jkl_tz_from_time' ];
-    $ampm = isset( $_POST[ 'jkl_tz_am' ] ) ? 'am' : 'pm';
-    $from_time_str = $from_time . ':00' . $ampm;
-    $from_tz = $_POST[ 'jkl_tz_from_tz' ];
-    $to_tz = $_POST[ 'jkl_tz_to_tz' ];
-    
-    // Do some error checking / sanitizing here
-    $original_time = $from_date . " " . $from_time_str;
-    
-    // Prevent injection/hacking
-    $tz_ids = timezone_identifiers_list();
-    if( in_array( $from_tz, $tz_ids ) && in_array( $to_tz, $tz_ids ) ) {
-        $from_tz_obj = new DateTimeZone( $from_tz );
-        $to_tz_obj = new DateTimeZone( $to_tz );
-        $converted_time = new DateTime( $original_time, $from_tz_obj );
-        $converted_time->setTimezone( $to_tz_obj );
-    }
-}
 ?>
 
 <form id="jkl_timezones_form" action="" method="POST">
