@@ -1,13 +1,16 @@
 .post #jkl_timezones_form {
-    background: steelblue;
+/*    background: steelblue;
     padding: 1em 1em 1.5em;
-    color: white;
+    color: white;*/
     margin-bottom: 2em;
     position: relative;
+    padding: 20px 20px 24px;
+    background: white;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
 }
 .post #jkl_timezones_form h4 {
     margin-top: 0;
-    color: #dcdcdc;
+    /*color: #dcdcdc;*/
 }
 .post #jkl_timezones_form dl {
     margin-bottom: 0;
@@ -52,8 +55,8 @@
     right: -0.5em;
 }
 .post #jkl_timezones_form input[type="submit"] {
-    background: steelblue;
-    color: white;
+    background: transparent;
+/*    color: white;*/
     border-color: #dcdcdc;
 }
 #jkl_timezones_form input[type="submit"]:hover {
