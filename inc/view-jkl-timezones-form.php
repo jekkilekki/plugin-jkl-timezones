@@ -16,12 +16,14 @@ require_once( 'controller.php' );
 <a id="jkl_timezone" name="jkl_timezone"></a>
 <form id="jkl_timezones_form" action="<?php // #jkl_timezone ?>" method="POST">
     
+    <?php wp_nonce_field( 'jkl_timezones', 'jkl_timezones_form' ); ?>
+    
     <h4>Timezone Converter</h4>
     <div class="jkl-from">
         From:
         <div class="jkl-from-time">
             <input type="text" name="jkl_tz_from_date" class="jkl-timezones-date" value="<?php
-                echo $from_date;
+                echo esc_attr( $from_date );
             ?>"><span class="dashicons dashicons-calendar"></span>
             <select name="jkl_tz_from_time" class="jkltz-time">
                 <?= time_select_options( $from_time ); ?>
@@ -44,10 +46,10 @@ require_once( 'controller.php' );
         To:
         <div class="jkl-to-time">
             <input type="text" class="jkl-converted-date" value="<?= 
-                isset( $converted_time ) ? $converted_time->format( 'F j, Y (D)' ) : ''; ?>"
+                isset( $converted_time ) ? esc_attr( $converted_time->format( 'F j, Y (D)' ) ) : ''; ?>"
                 readonly>
             <input type="text" class="jkl-converted-time" value="<?= 
-                isset( $converted_time ) ? '@ ' . $converted_time->format( 'g:i a' ) : ''; ?>"
+                isset( $converted_time ) ? '@ ' . esc_attr( $converted_time->format( 'g:i a' ) ) : ''; ?>"
                 readonly>
         </div>
         <div class="jkl-to-tz jkl-tz-select">

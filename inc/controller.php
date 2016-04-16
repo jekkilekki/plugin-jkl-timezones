@@ -46,17 +46,20 @@ if( isset( $_POST[ 'jkl_tz_reset' ] ) ) {
 /*
  * If submit button is pressed, calculate
  */
-if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
+if( isset( $_POST[ 'jkl_tz_submit' ] ) && wp_verify_nonce( $_POST[ 'jkl_timezones_form' ], 'jkl_timezones' ) ) {
     
-    $from_date = $_POST[ 'jkl_tz_from_date' ];
-    $from_time = $_POST[ 'jkl_tz_from_time' ];
+    $from_date = sanitize_text_field( $_POST[ 'jkl_tz_from_date' ] );
+    $from_time = sanitize_text_field( $_POST[ 'jkl_tz_from_time' ] );
     $ampm = isset( $_POST[ 'jkl_tz_am' ] ) ? 'am' : 'pm';
     $from_time_str = $from_time . ':00' . $ampm;
-    $from_tz = $_POST[ 'jkl_tz_from_tz' ];
-    $to_tz = $_POST[ 'jkl_tz_to_tz' ];
+    $from_tz = sanitize_option( timezone_string, $_POST[ 'jkl_tz_from_tz' ] );
+    $to_tz = sanitize_option( timezone_string, $_POST[ 'jkl_tz_to_tz' ] );
     
     //$from_date_parts = explode( '(', $from_date );
     //echo $from_date_parts[0];
+    
+    $from_date = substr( $from_date, -5 );
+    echo $from_date . ".";
     
     $from_date_parts = explode( ' ', $from_date );
     // Do some error checking / sanitizing here

@@ -169,6 +169,7 @@
 .jkl-to-time .jkl-converted-time:focus,
 .jkl-to-time .jkl-converted-time:active {
     border-color: silver;
+    border-top: none;
 }
 .jkl-to-time .jkl-converted-date {
     padding: 0;
@@ -232,11 +233,27 @@
  * Datepicker Styles
  */
 #ui-datepicker-div.jkl-timezones-datepicker {
-    margin-top: -2em;
+    /*margin-top: -2em;*/
 }
 .jkl-timezones-datepicker .ui-datepicker-header {
     background: gainsboro;
     position: relative;
+}
+.jkl-timezones-datepicker .ui-datepicker-header a {
+    padding-top: 3px;
+}
+.jkl-timezones-datepicker .ui-datepicker-title {
+    width: 65%!important;
+    margin: 0 auto;
+}
+.jkl-timezones-datepicker .ui-datepicker-month,
+.jkl-timezones-datepicker .ui-datepicker-year {
+    background: url(img/up-down-arrow.png) 95% no-repeat gainsboro;
+    width: 50%;
+    font-size: 0.8em;
+    height: 29px;
+    padding: 0 10px;
+    font-weight: normal;
 }
 .jkl-timezones-datepicker .ui-datepicker-prev {
     position: absolute;
