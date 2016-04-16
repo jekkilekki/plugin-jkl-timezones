@@ -1,11 +1,11 @@
 ![banner-772x250](https://cloud.githubusercontent.com/assets/6644259/14165024/adf49f18-f73f-11e5-8c2e-f24a3e07fb87.png)
 
-# JKL Timezones
+# JKL Timezone Converter
 
 * [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
 * [Author Page](http://www.aaronsnowberger.com/)
 
-A simple Timezone widget that allows you to calculate time differences and 
+A simple Timezone widget and shortcode that allows you to convert time differences and 
 easily plan events or meetings based in other timezones relative to your own.
 
 ##Description
@@ -15,21 +15,21 @@ world. Additionally, sometimes I need to arrange Skype calls or meetings with
 someone in a different timezone, OR there is an online event that I really want to 
 attend - in a different timezone. 
 
-I needed a way to quickly and easily convert 
-from one date and time in a particular timezone to another. (I hate Googling it 
-every time, or looking up timezone tables and doing mental math.) What I really 
-wanted was something I could just point, click, submit and have it spit out the
-relevant time for me in my timezone. So, I created this plugin which does just that.
+I needed a way to quickly and easily convert from one date and time in a particular 
+timezone to another. (I hate Googling it every time, or looking up timezone tables 
+and doing mental math.) What I really wanted was something I could just point, 
+click, submit and have it spit out therelevant time for me in my timezone. So, 
+I created this plugin which does just that.
 
 Requires WordPress 3.5 and PHP 5.4 or later.
 
 ###Special Features 
-* Automatically defaults the Calculator to your current date, time, and timezone
+* Automatically defaults to your current date, time, and timezone
 based on your WordPress General Settings
-* Allows you to select a City or Manual UTC offset for calculation in the same way
+* Allows you to select a City or Manual UTC offset for conversion in the same way
 the WordPress General Settings Page does
 * Uses a special jQuery calendar popup for easy date selection
-* Only allows one instance of the Calculator to run on any Page at one time
+* Only allows one instance of the Converter to run on a Page at one time
 
 ###Notes
 * Multiple widgets are allowed at once (on the same Post/Page)
@@ -40,8 +40,8 @@ will display only ONE form
 ###Planned Upcoming Features 
 * AJAX form submission to prevent page reload
 * Ability to give the shortcode a specific date and time (like for an Event you're 
-promoting) that will set as the default for the Calculator on that particular Page
-* Ability to change the color of the form (shortcode) or calculated result (widget)
+promoting) that will set as the default for the Converter on that particular Page
+* Ability to change the color of the form (shortcode) or converted result (widget)
 * Possibly allow users to select whether or not to display multiple forms in shortcodes
 and/or widgets 
 
@@ -63,11 +63,11 @@ Full documentation of the Plugin and its uses can (currently) be found at its
 
 ###Screenshots
 
-1. Timezone Calculator loaded in a Page via the shortcode
+1. Timezone Converter loaded in a Page via the shortcode
 
 ![screenshot-1](https://cloud.githubusercontent.com/assets/6644259/14580170/c90211b0-03ff-11e6-9327-d9388893c1ab.png)
 
-2. Timezone Calculator Widget
+2. Timezone Converter Widget
 
 ![screenshot-2](https://cloud.githubusercontent.com/assets/6644259/14580196/775719b8-0400-11e6-9509-b22a93552fb2.png)
 
@@ -101,6 +101,10 @@ program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fi
 Floor, Boston, MA 02110-1301 USA
 
 ##Changelog
+
+###1.0.2
+* Added better security features (WP nonce, validation, sanitization, escaping)
+* Re-styled to look more like Google's unit converter
 
 ###1.0
 * Initial release

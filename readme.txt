@@ -1,19 +1,19 @@
-=== JKL Timezones ===
+=== JKL Timezone Converter ===
 Contributors:           jekkilekki
-Plugin Name:            JKL Timezones
+Plugin Name:            JKL Timezone Converter
 Plugin URI:             https://github.com/jekkilekki/plugin-jkl-timezones
 Author:                 Aaron Snowberger
 Author URI:             http://www.aaronsnowberger.com/
 Donate link:            https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=567MWDR76KHLU
-Tags:                   content, custom, shortcode, widget, timezones, calculator
+Tags:                   content, custom, shortcode, widget, timezones, calculator, converter
 Requires at least:      3.5
 Tested up to:           4.5
-Stable tag:             1.0
-Version:                1.0
+Stable tag:             1.0.2
+Version:                1.0.2
 License:                GPLv2 or later
 License URI:            http://www.gnu.org/licenses/gpl-2.0.html
 
-A simple Timezone widget that allows you to calculate time differences and 
+A simple Timezone widget and shortcode that allows you to convert time differences and 
 easily plan events or meetings based in other timezones relative to your own.
 
 == Description ==
@@ -23,20 +23,21 @@ world. Additionally, sometimes I need to arrange Skype calls or meetings with
 someone in a different timezone, OR there is an online event that I really want to 
 attend - in a different timezone. 
 
-I needed a way to quickly and easily convert 
-from one date and time in a particular timezone to another. (I hate Googling it 
-every time, or looking up timezone tables and doing mental math.) What I really 
-wanted was something I could just point, click, submit and have it spit out the
-relevant time for me in my timezone. So, I created this plugin which does just that.
+I needed a way to quickly and easily convert from one date and time in a particular 
+timezone to another. (I hate Googling it every time, or looking up timezone tables 
+and doing mental math.) What I really wanted was something I could just point, 
+click, submit and have it spit out the relevant time for me in my timezone. So, 
+I created this plugin which does just that.
 
 Requires WordPress 3.5 and PHP 5.4 or later.
 
 = Special Features = 
-* Automatically defaults the Calculator to your current date, time, and timezone
+* Automatically defaults to your current date, time, and timezone
 based on your WordPress General Settings
-* Allows you to select a City or Manual UTC offset for calculation in the same way
+* Allows you to select a City or Manual UTC offset for conversion in the same way
 the WordPress General Settings Page does
 * Uses a special jQuery calendar popup for easy date selection
+* Only allows one instance of the Converter to run on a Page at one time
 
 = Notes =
 * Multiple widgets are allowed at once (on the same Post/Page)
@@ -47,8 +48,8 @@ will display only ONE form
 = Planned Upcoming Features = 
 * AJAX form submission to prevent page reload
 * Ability to give the shortcode a specific date and time (like for an Event you're 
-promoting) that will set as the default for the Calculator on that particular Page
-* Ability to change the color of the form (shortcode) or calculated result (widget)
+promoting) that will set as the default for the Converter on that particular Page
+* Ability to change the color of the form (shortcode) or converted result (widget)
 * Possibly allow users to select whether or not to display multiple forms in shortcodes
 and/or widgets 
 
@@ -76,7 +77,7 @@ Want updates about my other WordPress plugins, themes, or tutorials? Follow me
 = Automatic installation =
 1. Log into your WordPress admin
 2. Go to `Plugins -> Add New`
-3. Search for `JKL Timezones`
+3. Search for `JKL Timezone Converter`
 4. Click `Install Now`
 5. Activate the Plugin
 
@@ -108,7 +109,7 @@ a modern browser (Google Chrome, Firefox, Opera, or Internet Explorer 9 or later
 and right-click on the element you wish to style. Then find `Inspect` in the pop-up 
 contextual menu.
 
-= Why does the Timezone Calculator always show UTC time and not my current timezone? =
+= Why does the Timezone Converter always show UTC time and not my current timezone? =
 In order for your current timezone to show up in the timezone calculator as the 
 default, you first need to SET your default timezone in the WordPress Settings Page.
 In the WordPress admin menu, go to `Settings -> General` and find the dropdown to
@@ -121,17 +122,17 @@ accurate). For example, I am based in Seoul (UTC +9:00), but when I set it to `U
 `Tokyo` (which is located in the same timezone).
 
 = Why doesn't the Sidebar Widget also show up on a Page using the shortcode? =
-Simple: it's best to not allow TWO separate instances of the Timezone Calculator 
+Simple: it's best to not allow TWO separate instances of the Timezone Converter 
 to run on the same page. It's overkill. You only need one per page. The same is 
-true for multiple shortcodes on one page. Only ONE instance of the Timezone Calculator
+true for multiple shortcodes on one page. Only ONE instance of the Timezone Converter
 should be used on any one Page.
 
-= Why does my Page reload every time I click the Timezone Calculator buttons? =
+= Why does my Page reload every time I click the Timezone Converter buttons? =
 There is currently no AJAX functionality implemented by this plugin to maintain
 the state of the Page and dynamically calculate and show the answer without a 
 reload. This is a planned feature for an upcoming release.
 
-= Why do some of the Timezone Calculator fields appear out of place? =
+= Why do some of the Timezone Converter fields appear out of place? =
 For the most part, it depends on how your Theme styles those elements. I did my 
 best to style the form very simply and plainly, but some elements may appear out
 of place in your installation due to your Theme's default styles. In order to fix
@@ -147,8 +148,8 @@ to let me know the specific features or problems you're having.
 
 == Screenshots ==
 
-1. Timezone Calculator loaded in a Page via the shortcode
-2. Timezone Calculator Widget
+1. Timezone Converter loaded in a Page via the shortcode
+2. Timezone Converter Widget
 
 == Other Notes ==
 
@@ -176,6 +177,10 @@ program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fi
 Floor, Boston, MA 02110-1301 USA
 
 == Changelog ==
+
+= 1.0.2 =
+* Added better security features (WP nonce, validation, sanitization, escaping)
+* Re-styled to look more like Google's unit converter
 
 = 1.0 =
 * Initial release
