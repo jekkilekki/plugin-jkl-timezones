@@ -128,6 +128,7 @@
 }
 .jkl-from-time .jkl-ampm {
     float: left;
+    background: white;
     padding: 8px 10px 0;
     width: 30%;
     border-top: 1px solid #ededed;
@@ -204,6 +205,11 @@
 /*
  * WIDGET Specific Styles
  */
+.jkl_timezones_widget #jkl_timezones_form {
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+}
 .jkl_timezones_widget h4,
 .jkl_timezones_widget .jkltz-equal-sign {
     display: none;
@@ -218,8 +224,8 @@
     width: 40%;
 }
 .jkl_timezones_widget .dashicons-calendar {
-    top: 52px;
-    right: 30px;
+    top: 33px;
+    right: 12px;
 }
 
 /*
