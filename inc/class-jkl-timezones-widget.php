@@ -28,12 +28,12 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
             
             $widget_ops = array(
                     'classname'     => 'jkl_timezones_widget',
-                    'description'   => __( 'A Timezone Calculator Widget to help easily match times in different zones.', 'jkl-timezones' ),
+                    'description'   => __( 'A Timezone Converter Widget to help easily match times in different zones.', 'jkl-timezones' ),
             );
             parent::__construct( 
-                    'jkl_timezones_widget',                 // Base ID
-                    __( 'JKL Timezones', 'jkl-timezones' ), // Name
-                    $widget_ops                             // Args
+                    'jkl_timezones_widget',                         // Base ID
+                    __( 'JKL Timezone Converter', 'jkl-timezones' ),// Name
+                    $widget_ops                                     // Args
             );
             
             $this->register();

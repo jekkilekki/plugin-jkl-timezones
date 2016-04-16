@@ -69,10 +69,10 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             $this->version  = $version;
             
             // Create the widget
-            $this->widget = make_widget();
+            $this->make_widget();
             
             // Create the shortcode
-            $this->shortcode = make_shortcode();
+            $this->make_shortcode();
             
             // Load the plugin and supplementary files
             $this->load();
