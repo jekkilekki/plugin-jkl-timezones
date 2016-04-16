@@ -4,6 +4,8 @@
  * 
  * Displays time and timezone select options, listens for a form submission, and converts the time entered to the chosen timezone.
  * 
+ * @since       0.0.1
+ * 
  * @package     JKL_Timezones
  * @subpackage  JKL_Timezones/inc
  * @author      Aaron Snowberger <jekkilekki@gmail.com>
@@ -16,11 +18,14 @@ require_once( 'controller.php' );
 <a id="jkl_timezone" name="jkl_timezone"></a>
 <form id="jkl_timezones_form" action="<?php // #jkl_timezone ?>" method="POST">
     
-    <?php wp_nonce_field( 'jkl_timezones', 'jkl_timezones_form' ); ?>
+    <?php 
+    // Add a nonce (number once) to be sure submissions come from THIS form
+    wp_nonce_field( 'jkl_timezones', 'jkl_timezones_form' ); 
+    ?>
     
-    <h4>Timezone Converter</h4>
+    <h4><?php _e( 'Timezone Converter', 'jkl-timezones' ); ?></h4>
     <div class="jkl-from">
-        From:
+        <?php _e( 'From:', 'jkl-timezones' ); ?>
         <div class="jkl-from-time">
             <input type="text" name="jkl_tz_from_date" class="jkl-timezones-date" value="<?php
                 echo esc_attr( $from_date );
@@ -30,7 +35,7 @@ require_once( 'controller.php' );
             </select>
             <label for="jkltz-am" class="jkl-ampm">
                 <input type="checkbox" name="jkl_tz_am" id="jkltz-am" <?php echo ( $ampm == 'am' ) ? " checked" : ''; ?>>
-                am
+                <?php _e( 'am', 'jkl-timezones' ); ?>
             </label>
         </div>
         <div class="jkl-from-tz jkl-tz-select">
@@ -40,16 +45,16 @@ require_once( 'controller.php' );
         </div>
     </div>
     
-    <span class="jkltz-equal-sign">=</span>
+    <span class="jkltz-equal-sign"><?php _e( '=', 'jkl-timezones' ); ?></span>
     
     <div class="jkl-to">
-        To:
+        <?php _e( 'To:', 'jkl-timezones' ); ?>
         <div class="jkl-to-time">
             <input type="text" class="jkl-converted-date" value="<?= 
                 isset( $converted_time ) ? esc_attr( $converted_time->format( 'F j, Y (D)' ) ) : ''; ?>"
                 readonly>
             <input type="text" class="jkl-converted-time" value="<?= 
-                isset( $converted_time ) ? '@ ' . esc_attr( $converted_time->format( 'g:i a' ) ) : ''; ?>"
+                isset( $converted_time ) ? __( '@ ', 'jkl-timezones' ) . esc_attr( $converted_time->format( 'g:i a' ) ) : ''; ?>"
                 readonly>
         </div>
         <div class="jkl-to-tz jkl-tz-select">
@@ -60,8 +65,8 @@ require_once( 'controller.php' );
     </div>
     <br>
     <div class="jkl-tz-controls">
-        <input type="submit" name="jkl_tz_clear" value="Reset">
-        <input type="submit" name="jkl_tz_submit" value="Go">
+        <input type="submit" name="jkl_tz_clear" value="<?php _e( 'Reset', 'jkl-timezones' ); ?>">
+        <input type="submit" name="jkl_tz_submit" value="<?php _e( 'Go', 'jkl-timezones' ); ?>">
     </div>
 
 </form>

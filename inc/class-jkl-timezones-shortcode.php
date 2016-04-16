@@ -16,7 +16,7 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
     class JKL_Timezones_Shortcode {
         
         /**
-         * Register shortcode with WordPress
+         * Builds the shortcode object
          * 
          * @since   0.0.1
          */
@@ -26,11 +26,25 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
             
         }
         
-         function register() {
+        /**
+         * Registers the shortcode with WordPress
+         * 
+         * @since   0.0.1
+         */
+        protected function register() {
             add_shortcode( 'jkltz', array( $this, 'jkl_timezones_make_shortcode' ) );
         }
         
-         function jkl_timezones_make_shortcode() {
+        /**
+         * Creates the view for the shortcode
+         * 
+         * Only allows ONE instance of the shortcode per page (include_once) 
+         * Also prevents it from loading in the sidebar because of include_once
+         * 
+         * @since   0.0.1
+         * @global  post    $post   A reference to the current WordPress Post
+         */
+        public function jkl_timezones_make_shortcode() {
             
             // Prevent loading more than once per Page
             global $post;

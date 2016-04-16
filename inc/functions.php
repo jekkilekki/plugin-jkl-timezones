@@ -2,10 +2,14 @@
 /**
  * Returns the timezone string for a WP site, even if set to UTC offset
  * 
+ * This either retrieves the set WP timezone string, or tries to guess the user timezone
+ * based on certain things. As a last resort, revert to UTC.
+ * 
  * Adapted from http://www.php.net/manual/en/function.timezone-name-from-abbr.php#89155
  * @link    https://www.skyverge.com/blog/down-the-rabbit-hole-wordpress-and-timezones/
  * 
  * @since   0.0.1
+ * 
  * @return  string  valid PHP timezone string
  */
 if( !function_exists( 'wp_get_timezone_string' ) ) {
@@ -41,6 +45,20 @@ if( !function_exists( 'wp_get_timezone_string' ) ) {
     }
 }
 
+/**
+ * Function to create the <option>s list for each timezone <select> field - also selects the given <option>
+ * 
+ * The function adds additional disabled "continent" options and removes 
+ * that part of the string from the city name. It als adds non-breaking spaces 
+ * before city names for better formatting (like the WordPress Settings style).
+ * Additionally, we add all relevant +/- UTC offsets at the end of the list
+ * (in case the user chooses to use those rather than a city name).
+ * 
+ * @since   0.0.1
+ * 
+ * @param   string  $selected_timezone
+ * @return  string          Full list of timezones and offset <option>s
+ */
 function timezone_select_options( $selected_timezone=NULL ) {
     $tz_ids = timezone_identifiers_list();
     // $tz_ids = DateTimeZone::listIdentifiers();
@@ -103,6 +121,8 @@ function timezone_select_options( $selected_timezone=NULL ) {
 /**
  * Generic function to output select option values
  * We just need an assc array with key=>value pairs
+ * 
+ * @since   0.0.1
  *
  * @param   array   Associative array with key=>value pairs
  * @param   string  Selected value
@@ -121,6 +141,14 @@ function select_options_for( $assc_array, $selected_value=NULL ) {
     return $output;
 }
 
+/**
+ * Function that formats hours properly - originally based on 24-hour cycle and including am/pm (deprecated)
+ * 
+ * @since   0.0.1
+ * 
+ * @param   int     $hour
+ * @return  int                 Returns the hour based on a 12 hour cycle (previously 24)
+ */
 function hour_option_format( $hour ) {
     $hour_ampm = $hour < 12 ? $hour : $hour - 12;
     if( $hour_ampm == 0 ) { $hour_ampm = 12; }
@@ -130,14 +158,45 @@ function hour_option_format( $hour ) {
     return $output;
 }
 
+/**
+ * Function to pad single-digit ints with an extra 0 on the left
+ * 
+ * @since   0.0.1
+ * 
+ * @param   int    $minute
+ * @return  string              Single-digit ints are padded with an extra 0
+ */
 function minute_option_format( $minute ) {
     return str_pad( $minute, 2, '0', STR_PAD_LEFT );
 }
 
+/**
+ * Function that returns select <option>s for times from 1:00 - 12:45 in 15min increments
+ * 
+ * @since   0.0.1
+ * 
+ * @param   string  $selected_time  Time <option> that is selected
+ * @return  string                  New select <option>s including selected time (defaults to current time)  
+ */
 function time_select_options( $selected_time=NULL ) {
     if( is_null( $selected_time ) ) {
         $selected_time = round_time( date( 'H:i' ) );
     }
+    
+    $timeArr = get_valid_times();
+    
+    $time = array_combine( $timeArr, $timeArr );
+    return select_options_for( $time, $selected_time );
+}
+
+/**
+ * Function that returns valid times in an array to check against (preventing improper value submission)
+ * 
+ * @since   1.0.2
+ * 
+ * @return  array   List of times by 15min increments from 1:00 - 12:45
+ */
+function get_valid_times() {
     $hour_range = range( 1, 12 );
     $hour_labels = array_map( 'hour_option_format', $hour_range );
     $minute_range = range( 0, 59, 15 );
@@ -150,39 +209,23 @@ function time_select_options( $selected_time=NULL ) {
             $timeArr[] = "$hour:$minute";
         }
     }
-    $time = array_combine( $timeArr, $timeArr );
-    return select_options_for( $time, $selected_time );
+    return $timeArr;
 }
 
-/*
+/**
  * Round a time to the nearest X minutes (in this case 15 min)
+ * 
+ * @since   0.0.1
+ * 
+ * @param   string  $time_string    In the format H:mm
+ * @param   int     $increment      Given number to round to
+ * @return  string                  Rounded to the given number in the format H:mm
  */
 function round_time( $time_string, $increment ) {
     $time = explode( ':', $time_string );
     $hours = $time[0];
     $minutes = $time[1];
     return $hours . ":" . ( $minutes - ( $minutes % $increment ) );
-}
-
-/*
- * Function to return a two-digit
- */
-function get_month_num( $month_name ) {
-    switch( $month_name ) {
-        case 'January': return 1; break;
-        case 'February': return 2; break;
-        case 'March': return 3; break;
-        case 'April': return 4; break;
-        case 'May': return 5; break;
-        case 'June': return 6; break;
-        case 'July': return 7; break;
-        case 'August': return 8; break;
-        case 'September': return 9; break;
-        case 'October': return 10; break;
-        case 'November': return 11; break;
-        case 'December': return 12; break;
-        default: return 0;
-    }
 }
 
 /*

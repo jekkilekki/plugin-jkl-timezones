@@ -69,16 +69,22 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             $this->version  = $version;
             
             // Create the widget
-            $this->make_widget();
+            $this->widget = make_widget();
             
             // Create the shortcode
-            $this->make_shortcode();
+            $this->shortcode = make_shortcode();
             
             // Load the plugin and supplementary files
             $this->load();
             
         }
         
+        /**
+         * Creates the Widget
+         * 
+         * @since   0.0.1
+         * @return  widget  $widget     The Widget
+         */
         protected function make_widget() {
             
             if ( is_null( $this->widget ) ) {
@@ -88,6 +94,12 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
 
         }
         
+        /**
+         * Creates the Shortcode
+         * 
+         * @since   0.0.1
+         * @return  shortcode   $shortcode  The Shortcode
+         */
         protected function make_shortcode() {
             
             if ( is_null( $this->shortcode ) ) {
@@ -96,7 +108,13 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             return $this->shortcode;
             
         }
-         
+        
+        /**
+         * Loads translation directory
+         * Adds the call to enqueue styles and scripts
+         * 
+         * @since   0.0.1
+         */
         protected function load() {
             
             load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages' );
@@ -104,7 +122,11 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             
         }
         
-        // Enqueue Styles and Scripts
+        /**
+         * Enqueues Styles and Scripts
+         * 
+         * @since   0.0.1
+         */
         public function jkl_tz_scripts_styles() {
             
             wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );

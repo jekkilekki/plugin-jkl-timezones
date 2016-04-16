@@ -24,7 +24,6 @@ require_once( 'functions.php' );
     $to_tz = wp_get_timezone_string();
 
     // Default FROM DATE is today (current date)
-    //$from_date = date( 'Y\-m\-j' );
     $from_date = date( 'F j, Y (D)' );
     
     // Default FROM TIME is now (rounded by the function provided)
@@ -44,33 +43,43 @@ if( isset( $_POST[ 'jkl_tz_reset' ] ) ) {
 }
 
 /*
- * If submit button is pressed, calculate
+ * If submit button is pressed AND the nonce value is correct, calculate
  */
 if( isset( $_POST[ 'jkl_tz_submit' ] ) && wp_verify_nonce( $_POST[ 'jkl_timezones_form' ], 'jkl_timezones' ) ) {
     
+    // Valid times
+    $valid_times = get_valid_times();
+    
+    /*
+     * Validate & Sanitize form inputs
+     */
     $from_date = sanitize_text_field( $_POST[ 'jkl_tz_from_date' ] );
     $from_time = sanitize_text_field( $_POST[ 'jkl_tz_from_time' ] );
     $ampm = isset( $_POST[ 'jkl_tz_am' ] ) ? 'am' : 'pm';
-    $from_time_str = $from_time . ':00' . $ampm;
-    $from_tz = sanitize_option( timezone_string, $_POST[ 'jkl_tz_from_tz' ] );
-    $to_tz = sanitize_option( timezone_string, $_POST[ 'jkl_tz_to_tz' ] );
+    $from_tz = sanitize_text_field( $_POST[ 'jkl_tz_from_tz' ] );
+    $to_tz = sanitize_text_field( $_POST[ 'jkl_tz_to_tz' ] );
     
-    //$from_date_parts = explode( '(', $from_date );
-    //echo $from_date_parts[0];
+    /*
+     * Be sure the selected time is valid
+     */
+    if( in_array( $from_time, $valid_times ) ) {
+        // Create time string from selected time + 00 seconds + am/pm checkbox
+        $from_time_str = $from_time . ':00' . $ampm;
+        
+        // Truncate off the (Sat) day to get just the date
+        $original_time = substr( $from_date, 0, -6 );
+        
+        // Create a new DateTime object with the specified format
+        $original_time = DateTime::createFromFormat( 'F j, Y', $original_time );
+        
+        // Format the DateTime object properly and add the time string to the end
+        $original_time = $original_time->format( 'Y-m-d' ) . " " . $from_time_str;
+    }
     
-    $from_date = substr( $from_date, -5 );
-    echo $from_date . ".";
-    
-    $from_date_parts = explode( ' ', $from_date );
-    // Do some error checking / sanitizing here
-    //$original_time = strtotime( trim( $from_date_parts[0] ) );
-    $original_time = "";
-    $original_time .= $from_date_parts[2] . "-";
-    $original_time .= get_month_num( $from_date_parts[0] ) . "-";
-    $original_time .= $from_date_parts[1] . " ";
-    $original_time .= $from_time_str;
-    
-    // Prevent injection/hacking
+    /*
+     * Prevent injection/hacking
+     * Be sure the FROM timezone and TO timezone values are valid timezones (from PHP timezone_identifiers_list())
+     */
     $tz_ids = timezone_identifiers_list();
     if( in_array( $from_tz, $tz_ids ) && in_array( $to_tz, $tz_ids ) ) {
         $from_tz_obj = new DateTimeZone( $from_tz );
