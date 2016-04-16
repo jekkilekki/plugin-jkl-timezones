@@ -65,11 +65,11 @@ Full documentation of the Plugin and its uses can (currently) be found at its
 
 1. Timezone Calculator loaded in a Page via the shortcode
 
-![screenshot-1](https://cloud.githubusercontent.com/assets/6644259/14167004/0e926176-f753-11e5-84af-f3790a745b7f.png) 
+![screenshot-1](https://cloud.githubusercontent.com/assets/6644259/14580170/c90211b0-03ff-11e6-9327-d9388893c1ab.png)
 
 2. Timezone Calculator Widget
 
-![screenshot-2](https://cloud.githubusercontent.com/assets/6644259/14167024/49033042-f753-11e5-8b41-ef7e21907746.png)
+![screenshot-2](https://cloud.githubusercontent.com/assets/6644259/14580196/775719b8-0400-11e6-9509-b22a93552fb2.png)
 
 ###Contact Me
 If you have questions about, problems with, or suggestions for improving this 
