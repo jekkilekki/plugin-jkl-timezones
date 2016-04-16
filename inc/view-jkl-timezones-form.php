@@ -13,9 +13,10 @@ require_once( 'controller.php' );
 
 ?>
 
-<form id="jkl_timezones_form" action="" method="POST">
+<a id="jkl_timezone" name="jkl_timezone"></a>
+<form id="jkl_timezones_form" action="<?php // #jkl_timezone ?>" method="POST">
     
-    <h4>Timezone Calculator</h4>
+    <h4>Timezone Converter</h4>
     <div class="jkl-from">
         From:
         <div class="jkl-from-time">
@@ -37,14 +38,16 @@ require_once( 'controller.php' );
         </div>
     </div>
     
+    <span class="jkltz-equal-sign">=</span>
+    
     <div class="jkl-to">
         To:
         <div class="jkl-to-time">
             <input type="text" class="jkl-converted-date" value="<?= 
-                isset( $converted_time ) ? $converted_time->format( 'F j, Y' ) : ''; ?>"
+                isset( $converted_time ) ? $converted_time->format( 'F j, Y (D)' ) : ''; ?>"
                 readonly>
             <input type="text" class="jkl-converted-time" value="<?= 
-                isset( $converted_time ) ? $converted_time->format( 'g:i a' ) : ''; ?>"
+                isset( $converted_time ) ? '@ ' . $converted_time->format( 'g:i a' ) : ''; ?>"
                 readonly>
         </div>
         <div class="jkl-to-tz jkl-tz-select">
@@ -53,7 +56,7 @@ require_once( 'controller.php' );
             </select>
         </div>
     </div>
-    <hr>
+    <br>
     <div class="jkl-tz-controls">
         <input type="submit" name="jkl_tz_clear" value="Reset">
         <input type="submit" name="jkl_tz_submit" value="Go">

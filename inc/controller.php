@@ -24,7 +24,8 @@ require_once( 'functions.php' );
     $to_tz = wp_get_timezone_string();
 
     // Default FROM DATE is today (current date)
-    $from_date = date( 'Y\-m\-j' );
+    //$from_date = date( 'Y\-m\-j' );
+    $from_date = date( 'F j, Y (D)' );
     
     // Default FROM TIME is now (rounded by the function provided)
     $from_time = round_time( date( 'g:i' ), 15 ); // round to 15min increments
@@ -47,7 +48,6 @@ if( isset( $_POST[ 'jkl_tz_reset' ] ) ) {
  */
 if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
     
-    
     $from_date = $_POST[ 'jkl_tz_from_date' ];
     $from_time = $_POST[ 'jkl_tz_from_time' ];
     $ampm = isset( $_POST[ 'jkl_tz_am' ] ) ? 'am' : 'pm';
@@ -55,8 +55,17 @@ if( isset( $_POST[ 'jkl_tz_submit' ] ) ) {
     $from_tz = $_POST[ 'jkl_tz_from_tz' ];
     $to_tz = $_POST[ 'jkl_tz_to_tz' ];
     
+    //$from_date_parts = explode( '(', $from_date );
+    //echo $from_date_parts[0];
+    
+    $from_date_parts = explode( ' ', $from_date );
     // Do some error checking / sanitizing here
-    $original_time = $from_date . " " . $from_time_str;
+    //$original_time = strtotime( trim( $from_date_parts[0] ) );
+    $original_time = "";
+    $original_time .= $from_date_parts[2] . "-";
+    $original_time .= get_month_num( $from_date_parts[0] ) . "-";
+    $original_time .= $from_date_parts[1] . " ";
+    $original_time .= $from_time_str;
     
     // Prevent injection/hacking
     $tz_ids = timezone_identifiers_list();

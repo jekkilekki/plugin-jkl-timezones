@@ -12,22 +12,14 @@
          * Add Date Picker functionality to the JKL Timezones Widget
          */
         $( '.jkl-timezones-date' ).datepicker({
-            dateFormat: 'yy-mm-dd',
-            //changeMonth: true,
-            //changeYear: true,
+            //dateFormat: 'yy-mm-dd',
+            dateFormat: 'MM d, yy (D)',
+            changeMonth: true,
+            changeYear: true,
         });
         
          // Add a new class to the Datepicker to (hopefully) avoid conflicts with other plugins
         $( '#ui-datepicker-div' ).addClass( 'jkl-timezones-datepicker' );
-        
-        /*
-         * Functionality for selective dropdowns
-         * Only show city names for the continents they are in
-         */
-        var f_cont = $( '#from_continent' ).val();
-        var f_city = $( '#from_city' ).val();
-        var t_cont = $( '#to_continent' ).val();
-        var t_city = $( '#to_city' ).val();
         
     }); // END main function
     

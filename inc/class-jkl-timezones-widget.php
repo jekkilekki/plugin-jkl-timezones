@@ -111,7 +111,7 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
         public function form( $instance ) {
             
             // Outputs the options form on admin
-            $title = ! empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Timezone Calculator', 'jkl-timezones' );
+            $title = ! empty( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Timezone Converter', 'jkl-timezones' );
             $color = ! empty( $instance[ 'color' ] ) ? $instance[ 'color' ] : 'purple'; 
             
             
