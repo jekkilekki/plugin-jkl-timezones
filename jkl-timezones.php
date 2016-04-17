@@ -6,7 +6,7 @@
  * 
  * @wordpress-plugin
  * Plugin Name: JKL Timezone Converter
- * Plugin URI: 
+ * Plugin URI:  https://github.com/jekkilekki/plugin-jkl-timezones
  * Description: A simple Timezone widget and shortcode that allows you to calculate time differences and easily plan events or meetings based in other timezones relative to your own.
  * Version:     1.0.2
  * Author:      Aaron Snowberger
@@ -20,7 +20,7 @@
 
 /**
  * JKL Timezone Converter allows you to plan events or meetings based in other timezones relative to your own timezone.
- * Copyright (C) 2015  AARON SNOWBERGER (email: JEKKILEKKI@GMAIL.COM)
+ * Copyright (C) 2016  AARON SNOWBERGER (email: JEKKILEKKI@GMAIL.COM)
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -51,7 +51,7 @@ if ( ! defined( 'WPINC' ) ) die;
  */
 
 /*
- * The class that represents the core plugin class that is used to define the Widget
+ * The class that represents and defines the core plugin
  */
 require_once plugin_dir_path( __FILE__ ) . 'inc/class-jkl-timezones.php';
 

@@ -51,8 +51,6 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
          */
         private $shortcode;
         
-        private $shortcode_count;
-        
         
         /**
          * CONSTRUCTOR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -83,7 +81,7 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
          * Creates the Widget
          * 
          * @since   0.0.1
-         * @return  widget  $widget     The Widget
+         * @return  object  $widget     The Widget
          */
         protected function make_widget() {
             

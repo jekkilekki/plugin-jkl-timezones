@@ -9,6 +9,7 @@
  * @subpackage  JKL_Timezones/inc
  * @author      Aaron Snowberger <jekkilekki@gmail.com>
  */
+
 /* Prevent direct access */
 if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {

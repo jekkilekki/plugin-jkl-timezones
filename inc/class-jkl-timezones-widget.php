@@ -2,8 +2,6 @@
 /**
  * The class that creates the plugin Widget.
  * 
- * Defines the plugin name, version, and hooks for enqueing the stylesheet and JavaScript.
- * 
  * @since       0.0.1
  * 
  * @package     JKL_Timezones
