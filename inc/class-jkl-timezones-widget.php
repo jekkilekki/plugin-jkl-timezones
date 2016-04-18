@@ -79,7 +79,7 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
             
             // Only allow this widget to show up on Posts/Pages WITHOUT the shortcode
             global $post;
-            if ( ! has_shortcode( $post->post_content, 'jkltz' ) ) {
+            if ( ! has_shortcode( $post->post_content, 'jkl-timezones' ) ) {
                 
                 // Outputs the content of the widget
                 echo $args[ 'before_widget' ];
