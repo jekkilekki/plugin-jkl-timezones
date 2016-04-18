@@ -132,6 +132,14 @@ There is currently no AJAX functionality implemented by this plugin to maintain
 the state of the Page and dynamically calculate and show the answer without a 
 reload. This is a planned feature for an upcoming release.
 
+= Why do I have to scroll down the Page to see my results after conversion? =
+Currently, the plugin doesn't remember your page position when you submit the 
+conversion form, so because the form completely reloads the page, it thinks this 
+is the first time you're loading, so it will load to the top of the page. 
+
+Remembering page position is a planned upcoming feature, but it will be 
+unnecessary if/when I implement dynamic calculations with AJAX.
+
 = Why do some of the Timezone Converter fields appear out of place? =
 For the most part, it depends on how your Theme styles those elements. I did my 
 best to style the form very simply and plainly, but some elements may appear out
