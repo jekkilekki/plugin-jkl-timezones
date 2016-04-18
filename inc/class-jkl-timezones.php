@@ -129,7 +129,7 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
             
             // Selectively load styles and scripts only when the widget or shortcode are active on a page
             global $post;
-            if( is_active_widget( 'jkl_unit_converter_widget' ) || has_shortcode( $post->post_content, 'jkluc' ) ) {
+            if( is_active_widget( false, false, 'jkl_timezones_widget' ) || has_shortcode( $post->post_content, 'jkluc' ) ) {
                 
                 wp_enqueue_style( 'jkl-tz-styles', plugins_url( '../style.css', __FILE__ ) );
                 wp_enqueue_script( 'jkl-tz-scripts', plugins_url( '../js/functions.js', __FILE__ ), array( 'jquery', 'jquery-ui-datepicker' ), '20160327', true );
