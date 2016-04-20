@@ -6,7 +6,7 @@
 * [Author Page](http://www.aaronsnowberger.com/)
 
 A simple Timezone widget and shortcode that allows you to convert time differences and 
-easily plan events or meetings based in other timezones relative to your own.
+easily plan events or meetings based in other timezones.
 
 ##Description
 
@@ -102,9 +102,10 @@ Floor, Boston, MA 02110-1301 USA
 
 ##Changelog
 
-###1.0.2
+###1.0.3
 * Added better security features (WP nonce, validation, sanitization, escaping)
 * Re-styled to look more like Google's unit converter
+* Modified short descriptive text to fit on WordPress.org
 
 ###1.0
 * Initial release

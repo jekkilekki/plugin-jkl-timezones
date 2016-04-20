@@ -8,13 +8,13 @@ Donate link:            https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&host
 Tags:                   content, custom, shortcode, widget, timezones, calculator, converter
 Requires at least:      3.5
 Tested up to:           4.5
-Stable tag:             1.0.2
-Version:                1.0.2
+Stable tag:             1.0.3
+Version:                1.0.3
 License:                GPLv2 or later
 License URI:            http://www.gnu.org/licenses/gpl-2.0.html
 
 A simple Timezone widget and shortcode that allows you to convert time differences and 
-easily plan events or meetings based in other timezones relative to your own.
+easily plan events or meetings based in other timezones.
 
 == Description ==
 
@@ -186,9 +186,10 @@ Floor, Boston, MA 02110-1301 USA
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.0.3 =
 * Added better security features (WP nonce, validation, sanitization, escaping)
 * Re-styled to look more like Google's unit converter
+* Modified short descriptive text to fit on WordPress.org
 
 = 1.0 =
 * Initial release
