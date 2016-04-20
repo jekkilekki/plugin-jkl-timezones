@@ -1,4 +1,4 @@
-![banner-772x250](https://cloud.githubusercontent.com/assets/6644259/14165024/adf49f18-f73f-11e5-8c2e-f24a3e07fb87.png)
+![banner-772x250-text](https://cloud.githubusercontent.com/assets/6644259/14692664/b17eb3f8-0793-11e6-989a-87db68dab6b6.png)
 
 # JKL Timezone Converter
 
