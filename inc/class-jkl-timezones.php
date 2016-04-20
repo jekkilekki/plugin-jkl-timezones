@@ -115,7 +115,7 @@ if ( ! class_exists( 'JKL_Timezones' ) ) {
          */
         protected function load() {
             
-            load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages' );
+            load_plugin_textdomain( 'jkl-timezones', false, basename( dirname( __FILE__) ) . '/languages/' );
             add_action( 'wp_enqueue_scripts', array( $this, 'jkl_tz_scripts_styles' ) );
             
         }

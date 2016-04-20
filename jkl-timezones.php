@@ -12,6 +12,7 @@
  * Author:      Aaron Snowberger
  * Author URI:  http://www.aaronsnowberger.com
  * Text Domain: jkl-timezones
+ * Domain Path: /languages/
  * License:     GPL2
  * 
  * Requires at least: 3.5
