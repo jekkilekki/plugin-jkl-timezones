@@ -8,8 +8,8 @@ Donate link:            https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&host
 Tags:                   content, custom, shortcode, widget, timezones, calculator, converter
 Requires at least:      3.5
 Tested up to:           4.5
-Stable tag:             1.0.3
-Version:                1.0.3
+Stable tag:             1.0.4
+Version:                1.0.4
 License:                GPLv2 or later
 License URI:            http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,11 @@ click, submit and have it spit out the relevant time for me in my timezone. So,
 I created this plugin which does just that.
 
 Requires WordPress 3.5 and PHP 5.4 or later.
+
+= Usage = 
+Add the shortcode `[jkltz]` or `[jkl-timezones]` to your Post or Page. This will
+insert the Timezone Converter at the top of your content. Upcoming features may
+allow user positioning and setting default values.
 
 = Special Features = 
 * Automatically defaults to your current date, time, and timezone
@@ -185,6 +190,10 @@ program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fi
 Floor, Boston, MA 02110-1301 USA
 
 == Changelog ==
+
+= 1.0.4 = 
+* Added `[jkltz]` shortcode in addition to `[jkl-timezones]`
+* Added Readme documentation to show shortcode Usage
 
 = 1.0.3 =
 * Added better security features (WP nonce, validation, sanitization, escaping)
