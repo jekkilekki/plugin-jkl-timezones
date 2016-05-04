@@ -34,6 +34,7 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
          */
         protected function register() {
             add_shortcode( 'jkl-timezones', array( $this, 'jkl_timezones_make_shortcode' ) );
+            add_shortcode( 'jkltz', array( $this, 'jkl_timezones_make_shortcode' ) );
         }
         
         /**
@@ -54,7 +55,7 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
             
             // Prevent loading more than once per Page
             global $post;
-            if( has_shortcode( $post->post_content, 'jkl-timezones' ) ) {
+            if( has_shortcode( $post->post_content, 'jkl-timezones' ) || has_shortcode( $post->post_content, 'jkltz' ) ) {
                 if( $timezone_atts[ 'allow-widget' ] ) {
                     include 'view-jkl-timezones-form.php';
                 } else {
