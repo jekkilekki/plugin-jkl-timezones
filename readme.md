@@ -2,6 +2,8 @@
 
 # JKL Timezone Converter
 
+`Version 1.0.4`
+
 * [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
 * [Author Page](http://www.aaronsnowberger.com/)
 
@@ -22,6 +24,11 @@ click, submit and have it spit out therelevant time for me in my timezone. So,
 I created this plugin which does just that.
 
 Requires WordPress 3.5 and PHP 5.4 or later.
+
+###Usage 
+Add the shortcode `[jkltz]` or `[jkl-timezones]` to your Post or Page. This will
+insert the Timezone Converter at the top of your content. Upcoming features may
+allow user positioning and setting default values.
 
 ###Special Features 
 * Automatically defaults to your current date, time, and timezone
@@ -101,6 +108,10 @@ program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fi
 Floor, Boston, MA 02110-1301 USA
 
 ##Changelog
+
+###1.0.4
+* Added `[jkltz]` shortcode in addition to `[jkl-timezones]`
+* Added Readme documentation to show shortcode Usage
 
 ###1.0.3
 * Added better security features (WP nonce, validation, sanitization, escaping)
