@@ -59,7 +59,7 @@ if( !function_exists( 'wp_get_timezone_string' ) ) {
  * @param   string  $selected_timezone
  * @return  string          Full list of timezones and offset <option>s
  */
-function timezone_select_options( $selected_timezone=NULL ) {
+function timezone_select_options( $selected_timezone = NULL ) {
     $tz_ids = timezone_identifiers_list();
     // $tz_ids = DateTimeZone::listIdentifiers();
     
@@ -221,7 +221,7 @@ function get_valid_times() {
  * @param   int     $increment      Given number to round to
  * @return  string                  Rounded to the given number in the format H:mm
  */
-function round_time( $time_string, $increment ) {
+function round_time( $time_string, $increment = 1 ) { // provide a default of 1 to avoid missing argument and divide by 0 errors
     $time = explode( ':', $time_string );
     $hours = $time[0];
     $minutes = $time[1];

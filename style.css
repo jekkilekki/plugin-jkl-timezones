@@ -56,9 +56,12 @@
         .singular .jkl-to {
             margin-left: 3%;
         }
+.jkl-from {
+    margin-bottom: 10px;
+}
 .jkltz-equal-sign {
     position: absolute;
-    top: calc(50% - 25px);
+    /*top: calc(50% - 25px);*/
     left: calc(50% - 20px);
     font-size: 180%;
     text-align: center;
@@ -76,6 +79,9 @@
     -webkit-appearance: button;
     appearance: button;
     padding-left: 0;
+    border-left-color: silver;
+    border-right-color: silver;
+    border-bottom-color: silver;
 }
 /* Controls */
 #jkl_timezones_form input[type="submit"] {
@@ -111,9 +117,9 @@
 }
 .jkl-from-time .dashicons-calendar {
     position: absolute;
-    top: 32px;
-    right: 3%;
-    padding-top: 5px;
+    /*top: 32px;*/
+    right: 1.25em;
+    padding-top: 10px;
     font-size: 1.3em;
     color: #ccc!important;
 }
@@ -125,6 +131,7 @@
     border-radius: 0;
     border-bottom: 0;
     border-top: 1px solid #ededed!important;
+    border-left-color: silver;
 }
 .jkl-from-time .jkl-ampm {
     float: left;
@@ -157,6 +164,9 @@
     outline: none!important;
     box-shadow: none!important;
     font-weight: 300;
+    border-left-color: silver;
+    border-right-color: silver;
+    border-radius: 0;
 }
 .jkl-to-time .jkl-converted-date,
 .jkl-to-time .jkl-converted-date:focus,
