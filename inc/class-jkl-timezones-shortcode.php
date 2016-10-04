@@ -34,6 +34,7 @@ if ( ! class_exists( 'JKL_Timezones_Shortcode' ) ) {
          */
         protected function register() {
             add_shortcode( 'jkl-timezones', array( $this, 'jkl_timezones_make_shortcode' ) );
+            add_shortcode( 'jkl-timezone', array( $this, 'jkl_timezones_make_shortcode' ) );
             add_shortcode( 'jkltz', array( $this, 'jkl_timezones_make_shortcode' ) );
         }
         

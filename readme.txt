@@ -32,7 +32,7 @@ I created this plugin which does just that.
 Requires WordPress 3.5 and PHP 5.4 or later.
 
 = Usage = 
-Add the shortcode `[jkltz]` or `[jkl-timezones]` to your Post or Page. This will
+Add the shortcode `[jkltz]` or `[jkl-timezone]` or `[jkl-timezones]` to your Post or Page. This will
 insert the Timezone Converter at the top of your content. Upcoming features may
 allow user positioning and setting default values.
 
@@ -192,7 +192,7 @@ Floor, Boston, MA 02110-1301 USA
 == Changelog ==
 
 = 1.0.4 = 
-* Added `[jkltz]` shortcode in addition to `[jkl-timezones]`
+* Added `[jkltz]` and `[jkl-timezone]` shortcodes in addition to `[jkl-timezones]`
 * Added Readme documentation to show shortcode Usage
 
 = 1.0.3 =
