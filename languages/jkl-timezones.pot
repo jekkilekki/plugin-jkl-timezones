@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: JKL Timezone Converter\n"
+"POT-Creation-Date: 2016-10-18 13:47+0900\n"
+"PO-Revision-Date: 2016-10-18 13:48+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;_ex\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../inc/class-jkl-timezones-widget.php:29
+msgid "A Timezone Converter Widget to help easily match times in different zones."
+msgstr ""
+
+#: ../inc/class-jkl-timezones-widget.php:33
+msgid "JKL Timezone Converter"
+msgstr ""
+
+#: ../inc/class-jkl-timezones-widget.php:118
+#: ../inc/view-jkl-timezones-form.php:26
+msgid "Timezone Converter"
+msgstr ""
+
+#: ../inc/class-jkl-timezones-widget.php:125
+msgid "Title:"
+msgstr ""
+
+#: ../inc/functions.php:111
+msgid "Manual Offsets"
+msgstr ""
+
+#: ../inc/view-jkl-timezones-form.php:28
+msgid "From:"
+msgstr ""
+
+#: ../inc/view-jkl-timezones-form.php:38
+msgid "am"
+msgstr ""
+
+#: ../inc/view-jkl-timezones-form.php:51
+msgid "To:"
+msgstr ""
+
+#: ../inc/view-jkl-timezones-form.php:68
+msgid "Reset"
+msgstr ""
+
+#: ../inc/view-jkl-timezones-form.php:69
+msgid "Go"
+msgstr ""

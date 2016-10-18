@@ -108,7 +108,7 @@ function timezone_select_options( $selected_timezone = NULL ) {
     
     $ordered_Offsets = array_merge( $negative, $positive );
     
-    $output .= "<option value='' disabled>Manual Offsets</option>";
+    $output .= "<option value='' disabled>" . _ex( 'Manual Offsets', 'Manual Timezone offsets UTC+9, etc', 'jkl-timezones' ) . "</option>";
     foreach( $ordered_Offsets as $offset ) {
         $output .= "<option value=''>";
         $output .= $spaces . "UTC $offset";

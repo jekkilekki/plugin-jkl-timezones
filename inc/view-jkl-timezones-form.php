@@ -25,7 +25,7 @@ require_once( 'controller.php' );
     
     <h4><?php _e( 'Timezone Converter', 'jkl-timezones' ); ?></h4>
     <div class="jkl-from">
-        <?php _e( 'From:', 'jkl-timezones' ); ?>
+        <?php _ex( 'From:', 'Original time', 'jkl-timezones' ); ?>
         <div class="jkl-from-time">
             <input type="text" name="jkl_tz_from_date" class="jkl-timezones-date" value="<?php
                 echo esc_attr( $from_date );
@@ -35,7 +35,7 @@ require_once( 'controller.php' );
             </select>
             <label for="jkltz-am" class="jkl-ampm">
                 <input type="checkbox" name="jkl_tz_am" id="jkltz-am" <?php echo ( $ampm == 'am' ) ? " checked" : ''; ?>>
-                <?php _e( 'am', 'jkl-timezones' ); ?>
+                <?php _ex( 'am', 'Morning time (am/pm)', 'jkl-timezones' ); ?>
             </label>
         </div>
         <div class="jkl-from-tz jkl-tz-select">
@@ -45,16 +45,16 @@ require_once( 'controller.php' );
         </div>
     </div>
     
-    <span class="jkltz-equal-sign"><?php _e( '=', 'jkl-timezones' ); ?></span>
+    <span class="jkltz-equal-sign">=</span>
     
     <div class="jkl-to">
-        <?php _e( 'To:', 'jkl-timezones' ); ?>
+        <?php _ex( 'To:', 'Converted time', 'jkl-timezones' ); ?>
         <div class="jkl-to-time">
             <input type="text" class="jkl-converted-date" value="<?= 
                 isset( $converted_time ) ? esc_attr( $converted_time->format( 'F j, Y (D)' ) ) : ''; ?>"
                 readonly>
             <input type="text" class="jkl-converted-time" value="<?= 
-                isset( $converted_time ) ? __( '@ ', 'jkl-timezones' ) . esc_attr( $converted_time->format( 'g:i a' ) ) : ''; ?>"
+                isset( $converted_time ) ? ' @ ' . esc_attr( $converted_time->format( 'g:i a' ) ) : ''; ?>"
                 readonly>
         </div>
         <div class="jkl-to-tz jkl-tz-select">
@@ -65,8 +65,8 @@ require_once( 'controller.php' );
     </div>
     <br>
     <div class="jkl-tz-controls">
-        <input type="submit" name="jkl_tz_clear" value="<?php _e( 'Reset', 'jkl-timezones' ); ?>">
-        <input type="submit" name="jkl_tz_submit" value="<?php _e( 'Go', 'jkl-timezones' ); ?>">
+        <input type="submit" name="jkl_tz_clear" value="<?php _ex( 'Reset', 'Clear or erase form', 'jkl-timezones' ); ?>">
+        <input type="submit" name="jkl_tz_submit" value="<?php _ex( 'Go', 'Run converter program', 'jkl-timezones' ); ?>">
     </div>
 
 </form>

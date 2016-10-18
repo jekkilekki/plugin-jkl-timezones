@@ -8,7 +8,7 @@
  * Plugin Name: JKL Timezone Converter
  * Plugin URI:  https://github.com/jekkilekki/plugin-jkl-timezones
  * Description: A simple Timezone widget and shortcode that allows you to calculate time differences and easily plan events or meetings based in other timezones.
- * Version:     1.0.4
+ * Version:     1.0.5
  * Author:      Aaron Snowberger
  * Author URI:  http://www.aaronsnowberger.com
  * Text Domain: jkl-timezones
@@ -71,7 +71,7 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-jkl-timezones-shortcode.ph
  */
 function run_timezones() {
     // Instantiate the plugin class
-    $JKL_Timezones = new JKL_Timezones( 'jkl-timezones', '1.0.4' );
+    $JKL_Timezones = new JKL_Timezones( 'jkl-timezones', '1.0.5' );
 }
 
 run_timezones();

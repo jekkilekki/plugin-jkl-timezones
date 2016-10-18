@@ -122,7 +122,7 @@ if ( ! class_exists( 'JKL_Timezones_Widget' ) ) {
             ?>
             
             <p>
-                <label for="<?= $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'jkl-timezones' ); ?></label>
+                <label for="<?= $this->get_field_id( 'title' ); ?>"><?php _ex( 'Title:', 'Widget title', 'jkl-timezones' ); ?></label>
                 <input class="widefat" id="<?= $this->get_field_id( 'title' ); ?>" name="<?= $this->get_field_name( 'title' ); ?>" type="text" value="<?= esc_attr( $title ); ?>">
                 <?php 
                 /*  // Possible inclusion in a later version

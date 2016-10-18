@@ -2,7 +2,7 @@
 
 # JKL Timezone Converter
 
-`Version 1.0.4`
+`Version 1.0.5`
 
 * [Plugin Page](https://github.com/jekkilekki/plugin-jkl-timezones)
 * [Author Page](http://www.aaronsnowberger.com/)
@@ -54,7 +54,7 @@ and/or widgets
 
 ###Translations 
 * English (EN) - default
-* Korean (KO) - upcoming
+* Korean (KO)
 
 If you want to help translate the plugin into your language, please have a look 
 at the `.pot` file which contains all definitions and may be used with a [gettext] 
@@ -108,6 +108,11 @@ program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fi
 Floor, Boston, MA 02110-1301 USA
 
 ##Changelog
+
+###1.0.5
+* Updated translatable strings
+* Added `.pot` file for translation
+* Added `en_US` and `ko_KR` translations
 
 ###1.0.4
 * Added `[jkltz]` and `[jkl-timezone]` shortcodes in addition to `[jkl-timezones]`
